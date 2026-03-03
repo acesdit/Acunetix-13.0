@@ -6,6 +6,13 @@ function App() {
   const emptyRefs = { heroRef: null, eventRef: null, aboutRef: null, scheduleRef: null };
   const dummyScroll = () => {};
 
+  const images = [
+    "https://images.unsplash.com/photo-1517841905240-472988babdf9",
+    "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6",
+    "https://images.unsplash.com/photo-1501196354995-cbb51c65aaea",
+    "https://images.unsplash.com/photo-1494790108377-be9c29b29330",
+  ];
+
   return (
     <div className="bg-black min-h-screen flex flex-col justify-between">
        {/* Navbar */}
