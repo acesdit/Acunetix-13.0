@@ -13,72 +13,62 @@ const Navbar = ({ scrollToRefs, scrollToSection, isScrolled }) => {
   };
 
   return (
-    <nav className={`text-white py-2 max-sm:px-5 md:px-4 lg:px-12 fixed w-full z-50 transition-all duration-300 ${
+    <nav className={`text-white py-2 fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
       isScrolled 
-        ? "bg-black/90  backdrop-blur-lg shadow-md" 
+        ? "bg-black/90 backdrop-blur-lg shadow-md" 
         : "bg-black/50"
     }`}>
-      <div className="flex items-center justify-between" style={{ maxWidth: "1200px", margin: "0 auto" }}>
-        {/* Left as - Desktop */}
-        <div className="hidden md:flex space-x-12 gap-16">
+      {/* 1. ADDED: px-6 and max-w-7xl to prevent edge-bleeding in production.
+          2. REMOVED: manual margin: "0 auto" in favor of mx-auto.
+      */}
+      <div className="flex items-center justify-between max-w-7xl mx-auto px-6 md:px-12">
+        
+        {/* Left Links - Desktop */}
+        <div className="hidden md:flex items-center space-x-8 lg:space-x-12">
           <a
             href="#home"
-            onClick={(e) => {
-              e.preventDefault();
-              handleLinkClick(scrollToRefs.heroRef);
-            }}
-            className="hover:text-zinc-400 transition-colors duration-200 text-lg font-medium px-4 mx-5"
+            onClick={(e) => { e.preventDefault(); handleLinkClick(scrollToRefs.heroRef); }}
+            className="hover:text-zinc-400 transition-colors duration-200 text-lg font-medium"
           >
             Home
           </a>
           <a
             href="#events"
-            onClick={(e) => {
-              e.preventDefault();
-              handleLinkClick(scrollToRefs.eventRef);
-            }}
-            className="hover:text-zinc-400 transition-colors duration-200 text-lg font-medium px-4"
+            onClick={(e) => { e.preventDefault(); handleLinkClick(scrollToRefs.eventRef); }}
+            className="hover:text-zinc-400 transition-colors duration-200 text-lg font-medium"
           >
             Events
           </a>
         </div>
 
         {/* Center Logo */}
-        <div className="flex-1 flex justify-center">
+        <div className="flex justify-center">
           <a
             href="#home"
-            onClick={(e) => {
-              e.preventDefault();
-              handleLinkClick(scrollToRefs.heroRef);
-            }}
+            onClick={(e) => { e.preventDefault(); handleLinkClick(scrollToRefs.heroRef); }}
           >
+            {/* REMOVED: ml-8 which was pushing the logo off-center */}
             <img
               src={logo}
               alt="Logo"
-              className="transform hover:scale-105 ml-8 transition-transform duration-300 "
+              className="h-10 w-auto transform hover:scale-105 transition-transform duration-300"
             />
           </a>
         </div>
 
-        {/* Right as - Desktop */}
-        <div className="hidden md:flex space-x-12 gap-16">
+        {/* Right Links - Desktop */}
+        <div className="hidden md:flex items-center space-x-8 lg:space-x-12">
           <a
             href="#schedule"
-            onClick={(e) => {
-              e.preventDefault();
-              handleLinkClick(scrollToRefs.scheduleRef);
-            }}
-            className="hover:text-zinc-400 transition-colors duration-200 text-lg font-medium px-4 mx-5"
+            onClick={(e) => { e.preventDefault(); handleLinkClick(scrollToRefs.scheduleRef); }}
+            className="hover:text-zinc-400 transition-colors duration-200 text-lg font-medium"
           >
             Schedule
           </a>
           <a
             href="#about"
-            onClick={(e) => {
-              e.preventDefault();
-              handleLinkClick(scrollToRefs.aboutRef);
-            }}
-            className="hover:text-zinc-400 transition-colors duration-200 text-lg font-medium px-4"
+            onClick={(e) => { e.preventDefault(); handleLinkClick(scrollToRefs.aboutRef); }}
+            className="hover:text-zinc-400 transition-colors duration-200 text-lg font-medium"
           >
             About
           </a>
@@ -86,10 +76,9 @@ const Navbar = ({ scrollToRefs, scrollToSection, isScrolled }) => {
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden py-2 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white"
+          className="md:hidden p-2 focus:outline-none focus:ring-2 focus:ring-white rounded-md"
           onClick={() => setIsMenuOpen((prev) => !prev)}
           aria-label="Toggle menu"
-          aria-expanded={isMenuOpen}
         >
           <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             {isMenuOpen ? (
@@ -106,66 +95,31 @@ const Navbar = ({ scrollToRefs, scrollToSection, isScrolled }) => {
         className={`fixed backdrop-blur-xl z-50 top-0 right-0 h-full text-white transition-transform duration-500 ease-in-out transform ${
           isMenuOpen ? "translate-x-0" : "translate-x-full"
         }`}
-        style={{ width: "190px", background: "rgba(0, 0, 0, 0.971)" }}
+        style={{ width: "240px", background: "rgba(0, 0, 0, 0.98)" }}
       >
-        <div className="flex flex-col space-y-4 text-center bg-[#0000006f]">
+        <div className="flex flex-col h-full">
           <button
-            className="self-end focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white"
-            style={{ padding: "1rem 1.5rem" }}
+            className="self-end p-6 focus:outline-none"
             onClick={() => setIsMenuOpen(false)}
-            aria-label="Close menu"
           >
             <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
-          <div className="flex  flex-col py-4" style={{ height: "90vh" }}>
-            <div className="flex justify-center align-middle  flex-col py-4" style={{ gap: "1rem" }}>
+          <div className="flex flex-col items-center space-y-8 mt-10">
+            {['Home', 'About', 'Events', 'Schedule'].map((item) => (
               <a
-                href="#home"
+                key={item}
+                href={`#${item.toLowerCase()}`}
                 onClick={(e) => {
                   e.preventDefault();
-                  handleLinkClick(scrollToRefs.heroRef);
+                  handleLinkClick(scrollToRefs[`${item.toLowerCase()}Ref`] || scrollToRefs.heroRef);
                 }}
-                className="py-2 hover:text-gray-400 transition-colors duration-300"
-                style={{ fontSize: "1.5rem", padding: "1rem 2rem" }}
+                className="text-2xl hover:text-gray-400 transition-colors"
               >
-                Home
+                {item}
               </a>
-              <a
-                href="#about"
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleLinkClick(scrollToRefs.aboutRef);
-                }}
-                className="py-2 hover:text-gray-400 transition-colors duration-300"
-                style={{ fontSize: "1.5rem", padding: "1rem 1rem" }}
-              >
-                About
-              </a>
-              <a
-                href="#events"
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleLinkClick(scrollToRefs.eventRef);
-                }}
-                className="py-2 hover:text-gray-400 transition-colors duration-300"
-                style={{ fontSize: "1.5rem", padding: "1rem 1rem" }}
-              >
-                Events
-              </a>
-              <a
-                href="#schedule"
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleLinkClick(scrollToRefs.scheduleRef);
-                }}
-                className="py-2 hover:text-gray-400 transition-colors duration-300"
-                style={{ fontSize: "1.5rem", padding: "1rem 1rem" }}
-              >
-                Schedule
-              </a>
-            </div>
+            ))}
           </div>
         </div>
       </div>
