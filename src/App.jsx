@@ -1,6 +1,7 @@
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import BotpressChat from './components/BotpressChat';
+import BounceCards from "./components/BounceCards";
 
 function App() {
   const emptyRefs = { heroRef: null, eventRef: null, aboutRef: null, scheduleRef: null };
