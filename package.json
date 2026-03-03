@@ -10,13 +10,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
-<<<<<<< HEAD
+
     "framer-motion": "^12.34.4",
     "gsap": "^3.14.2",
-=======
+
     "@botpress/webchat": "^4.4.4",
     "framer-motion": "^12.34.5",
->>>>>>> chatbot
+
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
   },
