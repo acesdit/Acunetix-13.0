@@ -4,7 +4,7 @@ import './About.css';
 
 const About = forwardRef((props, ref) => {
   return (
-    <section ref={ref} id="about" className="about-section">
+    <section ref={ref} id="about" className="about-section min-h-screen relative overflow-hidden">
       {/* Animated grid background */}
       <div className="about-grid-bg">
         <GridScan
@@ -26,7 +26,7 @@ const About = forwardRef((props, ref) => {
 
       {/* Centered text content */}
       <div className="about-content">
-        <h2 className="about-title">About Us</h2>
+        <h2 className="about-title text-6xl font-bold text-white">About Us</h2>
         <p className="about-paragraph">
           Acunetix 12.0 is a flagship event organised by ACES and CSI, offering
           a range of Tech &amp; Non-Tech events. Participants take part in

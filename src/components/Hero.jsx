@@ -56,8 +56,8 @@ const Hero = forwardRef((props, ref) => {
             glitchInterval={3000}
             glitchDuration={300}
           >
-            {/* Acunetix 13.0 */}
-            Borderland
+             Acunetix 13.0 
+            
           </FuzzyText>
         </div>
       </div>
