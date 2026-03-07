@@ -18,58 +18,93 @@
 }
 
 @keyframes floatCard {
-  0% { translate: 0 0; rotate: 0deg; }
-  100% { translate: 8px -14px; rotate: 5deg; }
+  0% {
+    translate: 0 0;
+    rotate: 0deg;
+  }
+
+  100% {
+    translate: 8px -14px;
+    rotate: 5deg;
+  }
 }
 
 @keyframes spin3d {
-  0% { transform: rotateX(-15deg) rotateY(0deg); }
-  100% { transform: rotateX(-15deg) rotateY(360deg); }
+  0% {
+    transform: rotateX(-15deg) rotateY(0deg);
+  }
+
+  100% {
+    transform: rotateX(-15deg) rotateY(360deg);
+  }
 }
 
 @keyframes floatRandom {
-  0% { transform: var(--float-start); }
-  25% { transform: var(--float-mid1); }
-  50% { transform: var(--float-mid2); }
-  75% { transform: var(--float-mid3); }
-  100% { transform: var(--float-start); }
+  0% {
+    transform: var(--float-start);
+  }
+
+  25% {
+    transform: var(--float-mid1);
+  }
+
+  50% {
+    transform: var(--float-mid2);
+  }
+
+  75% {
+    transform: var(--float-mid3);
+  }
+
+  100% {
+    transform: var(--float-start);
+  }
 }
 
 @keyframes glitch {
-  0%, 100% {
-    text-shadow: 3px 0 #e63946, -3px 0 #00d4ff, 0 0 20px rgba(0,212,255,0.6), 0 0 60px rgba(0,212,255,0.3), 0 0 80px rgba(230,57,70,0.2);
+
+  0%,
+  100% {
+    text-shadow: 3px 0 #e63946, -3px 0 #00d4ff, 0 0 20px rgba(0, 212, 255, 0.6), 0 0 60px rgba(0, 212, 255, 0.3), 0 0 80px rgba(230, 57, 70, 0.2);
     transform: translate(0) skewX(0deg);
     opacity: 1;
   }
+
   7% {
-    text-shadow: -4px -1px #e63946, 4px 1px #00d4ff, 0 0 25px rgba(0,212,255,0.8);
+    text-shadow: -4px -1px #e63946, 4px 1px #00d4ff, 0 0 25px rgba(0, 212, 255, 0.8);
     transform: translate(-3px, 1px) skewX(-2deg);
   }
+
   10% {
-    text-shadow: 5px 0 #e63946, -5px 0 #00d4ff, 0 0 30px rgba(230,57,70,0.7);
+    text-shadow: 5px 0 #e63946, -5px 0 #00d4ff, 0 0 30px rgba(230, 57, 70, 0.7);
     transform: translate(4px, -1px) skewX(3deg);
     opacity: 0.85;
   }
+
   12% {
-    text-shadow: 2px 0 #e63946, -2px 0 #00d4ff, 0 0 20px rgba(0,212,255,0.5);
+    text-shadow: 2px 0 #e63946, -2px 0 #00d4ff, 0 0 20px rgba(0, 212, 255, 0.5);
     transform: translate(0) skewX(0deg);
     opacity: 1;
   }
+
   50% {
-    text-shadow: 3px 0 #e63946, -3px 0 #00d4ff, 0 0 20px rgba(0,212,255,0.6), 0 0 60px rgba(0,212,255,0.3);
+    text-shadow: 3px 0 #e63946, -3px 0 #00d4ff, 0 0 20px rgba(0, 212, 255, 0.6), 0 0 60px rgba(0, 212, 255, 0.3);
     transform: translate(0) skewX(0deg);
   }
+
   52% {
-    text-shadow: -6px -2px #e63946, 6px 2px #00d4ff, 0 0 35px rgba(0,212,255,0.9);
+    text-shadow: -6px -2px #e63946, 6px 2px #00d4ff, 0 0 35px rgba(0, 212, 255, 0.9);
     transform: translate(-5px, 2px) skewX(-4deg);
     opacity: 0.9;
   }
+
   55% {
-    text-shadow: 4px 1px #e63946, -4px -1px #00d4ff, 0 0 25px rgba(230,57,70,0.6);
+    text-shadow: 4px 1px #e63946, -4px -1px #00d4ff, 0 0 25px rgba(230, 57, 70, 0.6);
     transform: translate(3px, -1px) skewX(2deg);
   }
+
   57% {
-    text-shadow: 3px 0 #e63946, -3px 0 #00d4ff, 0 0 20px rgba(0,212,255,0.6), 0 0 60px rgba(0,212,255,0.3);
+    text-shadow: 3px 0 #e63946, -3px 0 #00d4ff, 0 0 20px rgba(0, 212, 255, 0.6), 0 0 60px rgba(0, 212, 255, 0.3);
     transform: translate(0) skewX(0deg);
     opacity: 1;
   }
@@ -139,7 +174,7 @@ footer {
 .billboard-countdown {
   position: absolute;
   /* Position on the billboard in the Shibuya image */
-  top: 40%;
+  top: 60%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 10;
@@ -189,7 +224,7 @@ footer {
 /* Responsive – scale down on smaller viewports */
 @media (max-width: 1024px) {
   .billboard-countdown {
-    top: 34%;
+    top: 60%;
     left: 50%;
     padding: 0.7rem 1.2rem;
   }
@@ -205,7 +240,7 @@ footer {
 
 @media (max-width: 640px) {
   .billboard-countdown {
-    top: 32%;
+    top: 55%;
     left: 50%;
     padding: 0.6rem 1rem;
   }
@@ -222,7 +257,7 @@ footer {
 /* ── Acunetix 13.0 Card ────────────────────────────── */
 .acunetix-card {
   position: absolute;
-  top: 5rem;
+  top: 20%;
   left: 50%;
   transform: translateX(-50%);
   z-index: 10;
@@ -257,6 +292,7 @@ footer {
 
 @media (max-width: 640px) {
   .acunetix-card {
+    top: 35%;
     bottom: 4%;
   }
 
@@ -495,4 +531,246 @@ footer {
 .schedule-placeholder {
   font-size: 1.1rem;
   color: rgba(255, 255, 255, 0.4);
+}
+
+/* ── Events Section ─────────────────────────────────── */
+.events-section {
+  padding: 5rem 2rem 8rem;
+  background: #000;
+  text-align: center;
+}
+
+.events-heading {
+  font-size: clamp(2rem, 6vw, 4rem);
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 4rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* ── Stacked Playing-Card Layout ────────────────────── */
+.stacked-cards-container {
+  position: relative;
+  width: 380px;
+  height: 480px;
+  margin: 0 auto;
+}
+
+.stacked-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Back card – rotated left, peeking out */
+.stacked-card-0 {
+  transform: rotate(-20deg) translateX(-70px) translateY(20px);
+}
+
+/* Middle card – slight right tilt */
+.stacked-card-1 {
+  transform: rotate(7deg) translateX(45px) translateY(-15px);
+}
+
+/* Front card – nearly straight */
+.stacked-card-2 {
+  transform: rotate(20deg) translateX(160px) translateY(20px);
+}
+
+/* On hover, lift and straighten */
+.stacked-card:hover {
+  transform: rotate(0deg) translateX(0) translateY(-30px) scale(1.04) !important;
+  z-index: 10 !important;
+}
+
+.stacked-comet-card {
+  width: 100%;
+  height: 100%;
+}
+
+.stacked-card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  width: 100%;
+  height: 480px;
+  padding: 2.5rem 2rem;
+  background: #004637;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1.25rem;
+  cursor: pointer;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.stacked-card-content:hover {
+  background: rgba(10, 10, 10, 0.98);
+  border-color: rgba(0, 255, 200, 0.2);
+}
+
+.stacked-card-number {
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: rgba(0, 255, 200, 0.15);
+  line-height: 1;
+}
+
+.stacked-card-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.stacked-card-subtitle {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.45);
+  margin: 0;
+}
+
+.event-card-cta {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(0, 255, 200, 0.7);
+  transition: color 0.2s ease;
+  margin-top: 1rem;
+}
+
+.stacked-card-content:hover .event-card-cta {
+  color: rgba(0, 255, 200, 1);
+}
+
+/* Responsive – Stacked Cards */
+@media (max-width: 600px) {
+  .events-section {
+    padding: 3rem 1rem 6rem;
+  }
+
+  .stacked-cards-container {
+    width: 280px;
+    height: 380px;
+  }
+
+  .stacked-card-content {
+    height: 380px;
+    padding: 2rem 1.5rem;
+  }
+
+  .stacked-card-number {
+    font-size: 2.5rem;
+  }
+
+  .stacked-card-title {
+    font-size: 1.4rem;
+  }
+
+  .stacked-card-0 {
+    transform: rotate(-6deg) translateX(-25px) translateY(8px);
+  }
+
+  .stacked-card-1 {
+    transform: rotate(3deg) translateX(15px) translateY(-5px);
+  }
+
+  .stacked-card-2 {
+    transform: rotate(-1deg) translateX(-3px);
+  }
+}
+
+/* ── Schedule Page ──────────────────────────────────── */
+.schedule-page {
+  min-height: 100vh;
+  background: #000;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.schedule-back-btn {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #fff;
+  padding: 0.5rem 1.2rem;
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.schedule-back-btn:hover {
+  border-color: rgba(0, 255, 200, 0.5);
+  color: rgba(0, 255, 200, 0.9);
+}
+
+.schedule-title {
+  font-size: clamp(2rem, 6vw, 4rem);
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.schedule-placeholder {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* ── Events Section – Scrollbar Hide ───────────────── */
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* ── Marquee Animation ────────────────────────────── */
+@keyframes marqueeScroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-33.333%);
+  }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marqueeScroll 30s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* ── Poster Float Animation ───────────────────────── */
+@keyframes posterFloat {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+.poster-float {
+  animation: posterFloat 4s ease-in-out infinite;
 }

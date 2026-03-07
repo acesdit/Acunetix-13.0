@@ -26,11 +26,11 @@ const allCards = [
 ];
 
 const reelVideos = [
-  { id: 1, src: reel3, label: 'Acunetix 3' },
-  { id: 2, src: reel4, label: 'Acunetix 4' },
-  { id: 3, src: reel5, label: 'Acunetix 5' },
-  { id: 4, src: reel6, label: 'Acunetix 6' },
-  { id: 5, src: reel7, label: 'Acunetix 7' },
+  { id: 1, src: reel3, label: '' },
+  { id: 2, src: reel4, label: '' },
+  { id: 3, src: reel5, label: '' },
+  { id: 4, src: reel6, label: '' },
+  { id: 5, src: reel7, label: '' },
 ];
 
 const floatingBgCards = [
@@ -143,7 +143,7 @@ const Reel = forwardRef((props, ref) => {
         style={{
           fontFamily: "'VerminVibes', 'Impact', 'Arial Black', sans-serif",
           fontSize: 'clamp(2.2rem, 9vw, 6rem)',
-          color: 'rgba(57, 255, 20, 0.75)',
+          color: 'rgba(0, 255, 200, 0.75)',
           textShadow: '0 0 10px rgba(57,255,20,0.3), 0 0 30px rgba(57,255,20,0.15)',
         }}
       >

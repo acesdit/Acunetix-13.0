@@ -1,15 +1,27 @@
 import { useState } from "react";
 import React from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import logo from "../assets/acunetix-logo.svg";
 
 const Navbar = ({ scrollToRefs, scrollToSection, isScrolled }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const handleLinkClick = (ref) => {
     setIsMenuOpen(false);
+    if (location.pathname !== '/') {
+      navigate('/');
+      return;
+    }
     if (ref) {
       setTimeout(() => scrollToSection(ref), 300);
     }
+  };
+
+  const handleScheduleClick = () => {
+    setIsMenuOpen(false);
+    navigate('/schedule');
   };
 
   return (
@@ -63,10 +75,10 @@ const Navbar = ({ scrollToRefs, scrollToSection, isScrolled }) => {
         {/* Right as - Desktop */}
         <div className="hidden md:flex space-x-12 gap-16">
           <a
-            href="#schedule"
+            href="/schedule"
             onClick={(e) => {
               e.preventDefault();
-              handleLinkClick(scrollToRefs.scheduleRef);
+              handleScheduleClick();
             }}
             className="hover:text-zinc-400 transition-colors duration-200 text-lg font-medium px-4 mx-5"
           >
@@ -155,10 +167,10 @@ const Navbar = ({ scrollToRefs, scrollToSection, isScrolled }) => {
                 Events
               </a>
               <a
-                href="#schedule"
+                href="/schedule"
                 onClick={(e) => {
                   e.preventDefault();
-                  handleLinkClick(scrollToRefs.scheduleRef);
+                  handleScheduleClick();
                 }}
                 className="py-2 hover:text-gray-400 transition-colors duration-300"
                 style={{ fontSize: "1.5rem", padding: "1rem 1rem" }}
