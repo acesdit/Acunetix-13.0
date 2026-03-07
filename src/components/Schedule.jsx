@@ -13,7 +13,7 @@ const Schedule = forwardRef((props, ref) => {
 
     return (
         <section ref={ref} id="events" className="events-section">
-            <h2 className="events-heading">Events</h2>
+            <h2 className="events-heading">Schedule</h2>
 
             <div className="stacked-cards-container">
                 {events.map((evt, idx) => (

@@ -10,6 +10,7 @@ import Schedule from './components/Schedule'
 import Sponsors from './components/Sponsors'
 import Reel from './components/Reel'
 import Footer from './components/Footer'
+import Chatbot from './components/Chatbot'
 import SchedulePage from './components/SchedulePage'
 import EventDetails from './components/EventDetails'
 
@@ -25,8 +26,8 @@ function HomePage({ scrollToRefs, scrollToSection, isScrolled }) {
       <main className="grow bg-black">
         <Hero ref={scrollToRefs.heroRef} />
         <About ref={scrollToRefs.aboutRef} />
-        <Schedule ref={scrollToRefs.scheduleRef} />
         <Event ref={scrollToRefs.eventRef} />
+        <Schedule ref={scrollToRefs.scheduleRef} />
         <Sponsors ref={scrollToRefs.sponsorsRef} />
         <Reel ref={scrollToRefs.reelRef} />
       </main>
@@ -83,7 +84,8 @@ function App() {
           />
           <Route path="/schedule" element={<SchedulePage />} />
         </Routes>
-      </div>
+        <Chatbot />
+    </div>
     </BrowserRouter>
   )
 }
