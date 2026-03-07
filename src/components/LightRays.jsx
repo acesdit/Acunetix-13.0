@@ -1,5 +1,5 @@
 import { useRef, useEffect, useState } from 'react';
-import { Renderer, Program, Triangle, Mesh } from 'ogl';
+//import { Renderer, Program, Triangle, Mesh } from 'ogl';
 
 const DEFAULT_COLOR = '#ffffff';
 
