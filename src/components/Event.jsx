@@ -47,8 +47,6 @@ const EventCard = React.memo(({ event, isActive }) => {
             src={event.poster}
             alt={event.name}
             className="w-full h-full object-cover"
-            loading="lazy"
-            decoding="async"
           />
 
           {/* Hover overlay — always in DOM, toggled via opacity */}
@@ -197,7 +195,7 @@ const Event = forwardRef((props, ref) => {
       {/* Header */}
       <div className="relative z-10 text-center mb-12 md:mb-16 px-4">
         <p className="text-[10px] md:text-xs font-semibold tracking-[0.4em] text-white/30 uppercase mb-4">
-          Department of Computer Engineering · DYP DPU · Presents
+          Acunetix Presents
         </p>
         <h2
           className="text-4xl md:text-6xl lg:text-7xl font-black uppercase tracking-wider"

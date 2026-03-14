@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { useInView } from 'framer-motion';
 import { EffectComposer, RenderPass, EffectPass, BloomEffect, ChromaticAberrationEffect } from 'postprocessing';
 import * as THREE from 'three';
 import * as faceapi from 'face-api.js';
@@ -300,6 +301,9 @@ export const GridScan = ({
 }) => {
     const containerRef = useRef(null);
     const videoRef = useRef(null);
+    const isInView = useInView(containerRef);
+    const isInViewRef = useRef(isInView);
+    useEffect(() => { isInViewRef.current = isInView; }, [isInView]);
 
     const rendererRef = useRef(null);
     const materialRef = useRef(null);
@@ -508,6 +512,12 @@ export const GridScan = ({
 
         let last = performance.now();
         const tick = () => {
+            if (!isInViewRef.current) {
+                last = performance.now();
+                rafRef.current = requestAnimationFrame(tick);
+                return;
+            }
+
             const now = performance.now();
             const dt = Math.max(0, Math.min(0.1, (now - last) / 1000));
             last = now;

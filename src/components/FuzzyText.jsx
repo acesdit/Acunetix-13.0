@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { useInView } from 'framer-motion';
 
 const FuzzyText = ({
   children,
@@ -22,6 +23,9 @@ const FuzzyText = ({
   className = ''
 }) => {
   const canvasRef = useRef(null);
+  const isInView = useInView(canvasRef);
+  const isInViewRef = useRef(isInView);
+  useEffect(() => { isInViewRef.current = isInView; }, [isInView]);
 
   useEffect(() => {
     let animationFrameId;
@@ -157,6 +161,12 @@ const FuzzyText = ({
           animationFrameId = window.requestAnimationFrame(run);
           return;
         }
+
+        if (!isInViewRef.current) {
+          animationFrameId = window.requestAnimationFrame(run);
+          return;
+        }
+
         lastFrameTime = timestamp;
 
         ctx.clearRect(

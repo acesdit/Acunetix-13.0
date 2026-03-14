@@ -211,7 +211,7 @@ const eventsData = [
             'LAN Setup Available',
         ],
         entryFee: '₹70–₹250',
-        prizePool: '₹10,000+',
+        prizePool: '₹10,000',
         date: 'March 7, 2026',
         time: '10:00 AM',
         venue: 'Gaming Zone',

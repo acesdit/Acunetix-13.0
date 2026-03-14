@@ -117,26 +117,8 @@ const EventDetails = () => {
     const event = eventsData.find((e) => e.id === eventName);
 
     const handleBack = useCallback(() => {
-        navigate('/');
-        setTimeout(() => {
-            const el = document.getElementById('events');
-            if (el) el.scrollIntoView({ behavior: 'smooth' });
-        }, 100);
+        navigate('/', { state: { scrollToEvents: true } });
     }, [navigate]);
-
-    useEffect(() => {
-        // Force scroll top immediately and after a micro-delay
-        // to handle AnimatePresence timing
-        window.scrollTo(0, 0);
-        document.documentElement.scrollTop = 0;
-        document.body.scrollTop = 0;
-        const t = setTimeout(() => {
-            window.scrollTo(0, 0);
-            document.documentElement.scrollTop = 0;
-            document.body.scrollTop = 0;
-        }, 50);
-        return () => clearTimeout(t);
-    }, [eventName]);
 
     if (!event) {
         return (
