@@ -16,14 +16,14 @@
     "face-api.js": "^0.22.2",
     "framer-motion": "^12.35.0",
     "lucide-react": "^0.577.0",
-    "motion": "^12.35.0",
+    "motion": "^12.35.1",
     "postprocessing": "^6.38.3",
     "radix-ui": "^1.4.3",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-router-dom": "^7.13.1",
     "tailwind-merge": "^3.5.0",
-    "three": "^0.183.2"
+    "three": "^0.167.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",

@@ -76,7 +76,7 @@ const ParticleCanvas = ({ color }) => {
     return (
         <canvas
             ref={canvasRef}
-            className="fixed inset-0 pointer-events-none z-[1]"
+            className="fixed inset-0 pointer-events-none z-1"
         />
     );
 };
@@ -203,7 +203,7 @@ const EventDetails = () => {
             </div>
 
             {/* Page content */}
-            <div className="relative z-10 flex-grow pt-24 pb-12">
+            <div className="relative z-10 grow pt-24 pb-12">
                 {/* Back button */}
                 <motion.div
                     className="pt-6 md:pt-8 px-6 md:px-12 lg:px-20"
@@ -427,7 +427,7 @@ const EventDetails = () => {
 
                 {/* Event meta info */}
                 <motion.div
-                    className="px-6 md:px-12 lg:px-20 mt-12 max-w-[1400px] mx-auto"
+                    className="px-6 md:px-12 lg:px-20 mt-12 max-w-350 mx-auto"
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 1.1 }}
