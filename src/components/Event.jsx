@@ -100,7 +100,6 @@ const EventCard = React.memo(({ event, isActive }) => {
         <h3
           className="text-lg md:text-xl font-black tracking-wider uppercase"
           style={{
-            fontFamily: "'VerminVibes', 'Orbitron', sans-serif",
             color: isActive ? '#fff' : '#666',
           }}
         >
@@ -199,7 +198,6 @@ const Event = forwardRef((props, ref) => {
         </p>
         <h2
           className="text-4xl md:text-6xl lg:text-7xl font-black uppercase tracking-wider"
-          style={{ fontFamily: "'VerminVibes', 'Orbitron', sans-serif" }}
         >
           <span className="text-white">Choose Your </span>
           <span
@@ -289,7 +287,6 @@ const Event = forwardRef((props, ref) => {
         <p
           className="text-lg md:text-2xl font-black tracking-[0.3em] uppercase"
           style={{
-            fontFamily: "'VerminVibes', 'Orbitron', sans-serif",
             transition: 'color 0.4s ease',
             color: theme?.primary || '#ff4500',
           }}

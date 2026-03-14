@@ -26,6 +26,7 @@ const SchedulePage = () => {
             }}>
                 { <PixelSnow
                     color="#ffffff"
+                    bitcount="Double"
                     flakeSize={0.01}
                     minFlakeSize={1.25}
                     pixelResolution={400}

@@ -2,6 +2,62 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
+@font-face {
+  font-family: 'Audiowide Local';
+  src: url('./assets/fonts/Audiowide/Audiowide-Regular.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('./assets/fonts/inter/Inter-Regular.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Bitcount Prop Double';
+  src: url('./assets/fonts/bitcount/BitcountPropDouble-Regular.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Bitcount Prop Double';
+  src: url('./assets/fonts/bitcount/BitcountPropDouble-Bold.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Bitcount Prop 2';
+  src: url('./assets/fonts/bitcount2/BitcountPropDouble_Roman-Regular.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Bitcount Prop 2';
+  src: url('./assets/fonts/bitcount2/BitcountPropDouble_Roman-Bold.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'DTC Winchester';
+  src: local('DTC Winchester Thick'), local('DTC Winchester');
+  font-style: normal;
+  font-weight: 700 900;
+  font-display: swap;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 
@@ -104,7 +160,7 @@
 }
 
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
   background-color: #000000;
@@ -149,8 +205,23 @@
 
 html,
 body {
-  height: 100%;
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  min-height: 100%;
+  height: auto;
   overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior-y: auto;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Audiowide Local', 'Inter', sans-serif !important;
 }
 
 #root {
@@ -394,6 +465,7 @@ footer {
 
 .events-heading {
   font-size: clamp(2rem, 6vw, 4rem);
+  font-family: 'Audiowide Local', 'Inter', sans-serif !important;
   font-weight: 800;
   color: #fff;
   margin-bottom: 3rem;
@@ -515,6 +587,7 @@ footer {
 
 .schedule-title {
   font-size: clamp(2rem, 6vw, 4rem);
+  font-family: 'Audiowide Local', 'Inter', sans-serif !important;
   font-weight: 800;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -535,6 +608,7 @@ footer {
 }
 
 .events-heading {
+  font-family: 'Audiowide Local', 'Inter', sans-serif !important;
   font-weight: 800;
   color: #fff;
   margin-bottom: 4rem;

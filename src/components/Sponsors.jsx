@@ -19,12 +19,12 @@ const sponsors = [
 
 const Sponsors = forwardRef((props, ref) => {
   return (
-    <section ref={ref} id="sponsors" className="relative w-full py-16 px-4 sm:px-6 lg:px-8 bg-black overflow-hidden">
+    <section ref={ref} id="sponsors" className="relative w-full min-h-screen px-4 sm:px-6 lg:px-8 bg-black overflow-hidden flex items-center">
       {/* LightRays background */}
       <div className="absolute inset-0">
         <LightRays
           raysOrigin="top-center"
-          raysColor="#00ffc8"
+          raysColor="#ffffff"
           raysSpeed={1}
           lightSpread={0.5}
           rayLength={3}
@@ -38,15 +38,20 @@ const Sponsors = forwardRef((props, ref) => {
         />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto">
+      <div className="relative z-10 max-w-7xl mx-auto w-full">
         <h2
-          className="font-black uppercase tracking-wider text-center mb-16"
-          style={{ fontFamily: "'VerminVibes', 'Orbitron', sans-serif", fontSize: 'clamp(2rem, 6vw, 4rem)' }}
+          className="uppercase tracking-wider text-center mb-16"
+          style={{
+            fontWeight: 800,
+            fontSize: 'clamp(2rem, 6vw, 4rem)',
+            letterSpacing: '0.08em',
+            lineHeight: 1.05,
+          }}
         >
           <span className="text-white">Our Sponsors</span>
         </h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-6 lg:gap-10 place-items-center">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-6 lg:gap-10 place-items-center items-center">
           {sponsors.map((sponsor, i) => (
             <TiltedCard
               key={i}

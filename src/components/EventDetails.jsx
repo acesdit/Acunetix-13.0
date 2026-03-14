@@ -273,7 +273,6 @@ const EventDetails = () => {
                             <h1
                                 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black uppercase leading-none mb-4"
                                 style={{
-                                    fontFamily: "'VerminVibes', 'Orbitron', monospace",
                                     color: '#fff',
                                     textShadow: `0 0 60px ${theme.primary}40, 0 0 120px ${theme.primary}20`,
                                 }}
