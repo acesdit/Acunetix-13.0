@@ -1,3 +1,88 @@
+ /* Glitch effect from CodePen (adapted for React/vanilla CSS) */
+.glitch {
+  position: relative;
+  margin: 0 auto;
+  color: #fff;
+  font-weight: 600;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  transform: scale3d(1,1,1);
+  font-family: 'Inter', Arial, sans-serif !important;
+  font-weight: 400 !important;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  color: #fff;
+  clip: rect(0, 900px, 0, 0);
+}
+
+.glitch::before {
+  left: 7px;
+  text-shadow: 1px 0 green;
+  animation: glitch-effect-before 3s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+  left: 3px;
+  text-shadow: -1px 0 red;
+  animation: glitch-effect-after 2s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-effect-before {
+  0%   { clip: rect(42px, 9999px, 44px, 0); }
+  5%   { clip: rect(12px, 9999px, 60px, 0); }
+  10%  { clip: rect(85px, 9999px, 100px, 0); }
+  15%  { clip: rect(24px, 9999px, 56px, 0); }
+  20%  { clip: rect(0px, 9999px, 20px, 0); }
+  25%  { clip: rect(65px, 9999px, 80px, 0); }
+  30%  { clip: rect(10px, 9999px, 50px, 0); }
+  35%  { clip: rect(50px, 9999px, 70px, 0); }
+  40%  { clip: rect(30px, 9999px, 60px, 0); }
+  45%  { clip: rect(60px, 9999px, 90px, 0); }
+  50%  { clip: rect(20px, 9999px, 40px, 0); }
+  55%  { clip: rect(80px, 9999px, 100px, 0); }
+  60%  { clip: rect(10px, 9999px, 30px, 0); }
+  65%  { clip: rect(70px, 9999px, 90px, 0); }
+  70%  { clip: rect(40px, 9999px, 60px, 0); }
+  75%  { clip: rect(60px, 9999px, 80px, 0); }
+  80%  { clip: rect(20px, 9999px, 40px, 0); }
+  85%  { clip: rect(50px, 9999px, 70px, 0); }
+  90%  { clip: rect(30px, 9999px, 50px, 0); }
+  95%  { clip: rect(80px, 9999px, 100px, 0); }
+  100% { clip: rect(0px, 9999px, 20px, 0); }
+}
+
+@keyframes glitch-effect-after {
+  0%   { clip: rect(12px, 9999px, 60px, 0); }
+  5%   { clip: rect(42px, 9999px, 44px, 0); }
+  10%  { clip: rect(24px, 9999px, 56px, 0); }
+  15%  { clip: rect(85px, 9999px, 100px, 0); }
+  20%  { clip: rect(65px, 9999px, 80px, 0); }
+  25%  { clip: rect(0px, 9999px, 20px, 0); }
+  30%  { clip: rect(50px, 9999px, 70px, 0); }
+  35%  { clip: rect(10px, 9999px, 50px, 0); }
+  40%  { clip: rect(60px, 9999px, 90px, 0); }
+  45%  { clip: rect(30px, 9999px, 60px, 0); }
+  50%  { clip: rect(80px, 9999px, 100px, 0); }
+  55%  { clip: rect(20px, 9999px, 40px, 0); }
+  60%  { clip: rect(70px, 9999px, 90px, 0); }
+  65%  { clip: rect(10px, 9999px, 30px, 0); }
+  70%  { clip: rect(60px, 9999px, 80px, 0); }
+  75%  { clip: rect(40px, 9999px, 60px, 0); }
+  80%  { clip: rect(50px, 9999px, 70px, 0); }
+  85%  { clip: rect(30px, 9999px, 50px, 0); }
+  90%  { clip: rect(80px, 9999px, 100px, 0); }
+  95%  { clip: rect(0px, 9999px, 20px, 0); }
+  100% { clip: rect(12px, 9999px, 60px, 0); }
+}
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
@@ -338,20 +423,7 @@ footer {
   background: transparent;
 }
 
-.acunetix-heading {
-  margin: 0;
-  font-size: clamp(3rem, 14vw, 10rem);
-  font-family: 'Audiowide Local', 'Inter', sans-serif !important;
-  font-weight: 900;
-  line-height: 1;
-  letter-spacing: 0.03em;
-  white-space: nowrap;
-  color: #fff;
-  text-transform: uppercase;
-  text-shadow:
-    0 0 1px rgba(255, 255, 255, 0.9),
-    0 0 10px rgba(255, 255, 255, 0.08);
-}
+
 
 
 .acunetix-card-tagline {

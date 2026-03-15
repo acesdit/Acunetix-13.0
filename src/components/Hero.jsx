@@ -41,10 +41,26 @@ const Hero = forwardRef((props, ref) => {
         </span>
       </div>
 
-      {/* Acunetix 13.0 Card */}
-      <div className="margin-top: acunetix-card ">
-        <div className="acunetix-card-inner">
-          <h1 className="acunetix-heading">Acunetix 13.0</h1>
+      {/* Acunetix 13.0 Card with Glitch Effect */}
+      <div className="acunetix-card">
+        <div className="acunetix-card-inner flex justify-center items-center w-full mt-8">
+          <h1
+            className="mx-auto"
+            style={{
+              fontFamily: "'Audiowide Local', 'Audiowide', Arial, sans-serif",
+              fontWeight: 400,
+              fontSize: 'clamp(3rem, 14vw, 10rem)',
+              lineHeight: 1,
+              letterSpacing: '0.03em',
+              whiteSpace: 'nowrap',
+              color: '#fff',
+              textTransform: 'uppercase',
+              textAlign: 'center',
+              position: 'relative',
+            }}
+          >
+            Acunetix 13.0
+          </h1>
         </div>
       </div>
     </section>

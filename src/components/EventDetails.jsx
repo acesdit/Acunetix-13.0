@@ -2,8 +2,13 @@ import React, { useEffect, useRef, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import eventsData from '../data/eventsData';
+import gamestormBg from '../assets/gamestrom bg.jpg';
+import gamestormFg from '../assets/foreground gamestrom.png';
 import Navbar from './Navbar';
 import Footer from './Footer';
+import FlickeringGrid from './FlickeringGrid';
+import MatrixRain from './MatrixRain';
+import LetterGlitch from './LetterGlitch';
 
 /* ── Particle Canvas — dramatic floating particles ── */
 const ParticleCanvas = ({ color }) => {
@@ -76,7 +81,7 @@ const ParticleCanvas = ({ color }) => {
     return (
         <canvas
             ref={canvasRef}
-            className="fixed inset-0 pointer-events-none z-[1]"
+            className="fixed inset-0 pointer-events-none z-1"
         />
     );
 };
@@ -144,21 +149,76 @@ const EventDetails = () => {
         );
     }
 
-    const { theme } = event;
 
+    const { theme, id } = event;
+
+    // Utility to invert a hex color (e.g. #4ac8c8 -> #b53737)
+    function invertHex(hex) {
+        let c = hex.replace('#', '');
+        if (c.length === 3) c = c.split('').map(x => x + x).join('');
+        if (c.length !== 6) return '#fff';
+        const r = (255 - parseInt(c.slice(0, 2), 16)).toString(16).padStart(2, '0');
+        const g = (255 - parseInt(c.slice(2, 4), 16)).toString(16).padStart(2, '0');
+        const b = (255 - parseInt(c.slice(4, 6), 16)).toString(16).padStart(2, '0');
+        return `#${r}${g}${b}`;
+    }
+    const invertedPrimary = invertHex(theme.primary);
+
+
+    // GameStorm custom background and glitch foreground (React+Tailwind only)
+    const isGameStorm = id === 'gamestorm';
     return (
         <motion.div
             className="min-h-screen relative flex flex-col overflow-x-hidden"
-            style={{ background: theme.gradient }}
+            style={isGameStorm ? { background: `url(${gamestormBg}) center/cover, ${theme.gradient}` } : { background: theme.gradient }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.6 }}
         >
-            <Navbar scrollToRefs={{ heroRef: true, aboutRef: true, eventRef: true, scheduleRef: true }} scrollToSection={() => navigate('/')} isScrolled={true} />
+            {/* GameStorm: No glitch effect, just normal background */}
+            {isGameStorm && (
+                <div className="pointer-events-none absolute inset-0 z-0">
+                    <div
+                        className="absolute inset-0 w-full h-full"
+                        style={{
+                            background: `url(${gamestormBg}) center/cover no-repeat`,
+                        }}
+                    />
+                </div>
+            )}
+            {/* ...existing code... */}
 
-            {/* Particle background */}
-            <ParticleCanvas color={theme.particleColor} />
+
+                        {/* Matrix rain for build-a-thon and codeoflies, FlickeringGrid for ctrlaltelite, all with bg-slate-900/90 overlay */}
+                        {(id === 'build-a-thon' || id === 'codeoflies') && (
+                                <>
+                                    <MatrixRain color={theme.primary} />
+                                      <div className="fixed inset-0 w-full h-full z-0 pointer-events-none bg-slate-900" />
+                                      <div className="fixed inset-0 w-full h-full z-0 pointer-events-none" style={{ background: 'rgba(0,0,0,0.85)' }} />
+                                </>
+                        )}
+                        {id === 'ctrlaltelite' && (
+                                <>
+                                    <FlickeringGrid color={theme.primary} className="z-0" />
+                                    <div className="fixed inset-0 w-full h-full z-0 pointer-events-none" />
+                                </>
+                        )}
+
+                        {/* LetterGlitch background for braniac and bugbounty, with fixed glitch colors and a dark overlay for readability */}
+                        {(id === 'brainiac' || id === 'bugbounty') && (
+                                <div className="fixed inset-0 w-full h-full z-0 pointer-events-none">
+                                    <LetterGlitch
+                                        glitchColors={['#ff3333', '#33ff33', '#3399ff']}
+                                        glitchSpeed={50}
+                                        centerVignette={true}
+                                        outerVignette={false}
+                                        smooth={true}
+                                        style={{ background: 'transparent' }}
+                                    />
+                                    <div className="absolute inset-0 bg-slate-900/70" style={{ zIndex: 1 }} />
+                                </div>
+                        )}
 
             {/* Large ambient glows — very visible */}
             <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
@@ -211,7 +271,7 @@ const EventDetails = () => {
             </div>
 
             {/* Page content */}
-            <div className="relative z-10 flex-grow pt-24 pb-12">
+            <div className="relative z-10 grow pt-24 pb-32">
                 {/* Back button */}
                 <motion.div
                     className="pt-6 md:pt-8 px-6 md:px-12 lg:px-20"
@@ -235,7 +295,7 @@ const EventDetails = () => {
 
                 {/* Main layout */}
                 <div className="px-6 md:px-12 lg:px-20 mt-8 md:mt-12">
-                    <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-start max-w-[1400px] mx-auto">
+                    <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-start max-w-350 mx-auto">
                         {/* Mobile poster (top) */}
                         <motion.div
                             className="lg:hidden w-full flex justify-center"
@@ -299,7 +359,7 @@ const EventDetails = () => {
 
                             {/* Themed divider */}
                             <div
-                                className="h-[2px] w-full mb-8"
+                                className="h-0.5 w-full mb-8"
                                 style={{
                                     background: `linear-gradient(to right, ${theme.primary}80, ${theme.primary}20, transparent)`,
                                     boxShadow: `0 0 15px ${theme.primary}40`,
@@ -322,7 +382,7 @@ const EventDetails = () => {
                                         transition={{ duration: 0.4, delay: 0.5 + i * 0.1 }}
                                     >
                                         <span
-                                            className="w-2.5 h-2.5 rounded-full mt-1 flex-shrink-0"
+                                            className="w-2.5 h-2.5 rounded-full mt-1 shrink-0"
                                             style={{
                                                 backgroundColor: theme.primary,
                                                 boxShadow: `0 0 10px ${theme.primary}80`,
@@ -395,7 +455,7 @@ const EventDetails = () => {
 
                         {/* Right column - Floating poster (desktop only) */}
                         <motion.div
-                            className="hidden lg:block flex-shrink-0"
+                            className="hidden lg:block shrink-0"
                             style={{ width: 'clamp(300px, 25vw, 420px)' }}
                             initial={{ opacity: 0, x: 60, rotate: 3 }}
                             animate={{ opacity: 1, x: 0, rotate: 0 }}
@@ -435,7 +495,7 @@ const EventDetails = () => {
 
                 {/* Event meta info */}
                 <motion.div
-                    className="px-6 md:px-12 lg:px-20 mt-12 max-w-[1400px] mx-auto"
+                    className="px-6 md:px-12 lg:px-20 mt-12 max-w-350 mx-auto"
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 1.1 }}
@@ -467,9 +527,12 @@ const EventDetails = () => {
 
             {/* Bottom marquee */}
             <MarqueeStrip words={theme.marqueeWords} color={theme.primary} />
+            {/* Sticky Navbar at bottom */}
             <Footer scrollToRefs={{ heroRef: true }} scrollToSection={() => navigate('/')} />
+            <Navbar className="fixed bottom-0 left-0 w-full z-50" />
         </motion.div>
     );
 };
 
 export default EventDetails;
+/* Glitch effect styles for GameStorm foreground */
