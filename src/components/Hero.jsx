@@ -1,6 +1,5 @@
 import React, { forwardRef, useState, useEffect } from 'react';
 import shibuyaCrossing from '../assets/shibuya crossing_2.png';
-import FuzzyText from './FuzzyText';
 
 const TARGET_DATE = new Date('2026-03-07T00:00:00+05:30').getTime();
 
@@ -42,23 +41,26 @@ const Hero = forwardRef((props, ref) => {
         </span>
       </div>
 
-      {/* Acunetix 13.0 Card with Fuzzy Text */}
-      <div className="margin-top: acunetix-card ">
-        <div className="acunetix-card-inner">
-          <FuzzyText
-            fontSize="clamp(14vw, 10vw, 5rem)"
-            fontWeight={900}
-            color="#fff"
-            enableHover
-            baseIntensity={0.2}
-            hoverIntensity={0.6}
-            glitchMode
-            glitchInterval={3000}
-            glitchDuration={300}
+      {/* Acunetix 13.0 Card with Glitch Effect */}
+      <div className="acunetix-card">
+        <div className="acunetix-card-inner flex justify-center items-center w-full mt-8">
+          <h1
+            className="mx-auto"
+            style={{
+              fontFamily: "'Audiowide Local', 'Audiowide', Arial, sans-serif",
+              fontWeight: 400,
+              fontSize: 'clamp(3rem, 14vw, 10rem)',
+              lineHeight: 1,
+              letterSpacing: '0.03em',
+              whiteSpace: 'nowrap',
+              color: '#fff',
+              textTransform: 'uppercase',
+              textAlign: 'center',
+              position: 'relative',
+            }}
           >
-             Acunetix 13.0 
-            
-          </FuzzyText>
+            Acunetix 13.0
+          </h1>
         </div>
       </div>
     </section>

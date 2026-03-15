@@ -1,5 +1,6 @@
-import React, { useState, useEffect, useRef} from 'react'
-import { useLocation, Routes, Route } from 'react-router-dom';
+import React, { useState, useEffect, useRef } from 'react'
+import { Routes, Route, useLocation } from 'react-router-dom'
+import { AnimatePresence, motion } from 'framer-motion'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
@@ -14,6 +15,12 @@ import SchedulePageNew_2 from './pages/SchedulePageNew_2'
 import SchedulePageNew_3 from './pages/SchedulePageNew_3'
 import EventDetails from './components/EventDetails'
 import { motion } from 'framer-motion';
+
+function forceScrollTop() {
+  window.scrollTo(0, 0);
+  document.documentElement.scrollTop = 0;
+  document.body.scrollTop = 0;
+}
 
 function HomePage({ scrollToRefs, scrollToSection, isScrolled }) {
   const location = useLocation();

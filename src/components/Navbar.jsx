@@ -8,10 +8,10 @@ const Navbar = ({ scrollToRefs, scrollToSection, isScrolled }) => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const handleLinkClick = (ref) => {
+  const handleLinkClick = (ref, section) => {
     setIsMenuOpen(false);
-    if (location.patGhname !== '/') {
-      navigate('/');
+    if (location.pathname !== "/") {
+      navigate("/", { state: { scrollTo: section } });
       return;
     }
     if (ref) {
@@ -21,8 +21,8 @@ const Navbar = ({ scrollToRefs, scrollToSection, isScrolled }) => {
 
   const handleScheduleClick = () => {
     setIsMenuOpen(false);
-    if (location.pathname !== '/') {
-      navigate('/');
+    if (location.pathname !== "/") {
+      navigate("/", { state: { scrollTo: "schedule" } });
       return;
     }
     if (scrollToRefs.scheduleRef) {
@@ -43,7 +43,7 @@ const Navbar = ({ scrollToRefs, scrollToSection, isScrolled }) => {
             href="#home"
             onClick={(e) => {
               e.preventDefault();
-              handleLinkClick(scrollToRefs.heroRef);
+              handleLinkClick(scrollToRefs.heroRef, "hero");
             }}
             className="hover:text-zinc-400 transition-colors duration-200 text-lg font-medium px-4 mx-5"
           >
@@ -53,7 +53,7 @@ const Navbar = ({ scrollToRefs, scrollToSection, isScrolled }) => {
             href="#events"
             onClick={(e) => {
               e.preventDefault();
-              handleLinkClick(scrollToRefs.eventRef);
+              handleLinkClick(scrollToRefs.eventRef, "events");
             }}
             className="hover:text-zinc-400 transition-colors duration-200 text-lg font-medium px-4"
           >
@@ -67,7 +67,7 @@ const Navbar = ({ scrollToRefs, scrollToSection, isScrolled }) => {
             href="#home"
             onClick={(e) => {
               e.preventDefault();
-              handleLinkClick(scrollToRefs.heroRef);
+              handleLinkClick(scrollToRefs.heroRef, "hero");
             }}
           >
             <img
@@ -94,7 +94,7 @@ const Navbar = ({ scrollToRefs, scrollToSection, isScrolled }) => {
             href="#about"
             onClick={(e) => {
               e.preventDefault();
-              handleLinkClick(scrollToRefs.aboutRef);
+              handleLinkClick(scrollToRefs.aboutRef, "about");
             }}
             className="hover:text-zinc-400 transition-colors duration-200 text-lg font-medium px-4"
           >
@@ -143,7 +143,7 @@ const Navbar = ({ scrollToRefs, scrollToSection, isScrolled }) => {
                 href="#home"
                 onClick={(e) => {
                   e.preventDefault();
-                  handleLinkClick(scrollToRefs.heroRef);
+                  handleLinkClick(scrollToRefs.heroRef, "hero");
                 }}
                 className="py-2 hover:text-gray-400 transition-colors duration-300"
                 style={{ fontSize: "1.5rem", padding: "1rem 2rem" }}
@@ -154,7 +154,7 @@ const Navbar = ({ scrollToRefs, scrollToSection, isScrolled }) => {
                 href="#about"
                 onClick={(e) => {
                   e.preventDefault();
-                  handleLinkClick(scrollToRefs.aboutRef);
+                  handleLinkClick(scrollToRefs.aboutRef, "about");
                 }}
                 className="py-2 hover:text-gray-400 transition-colors duration-300"
                 style={{ fontSize: "1.5rem", padding: "1rem 1rem" }}
@@ -165,7 +165,7 @@ const Navbar = ({ scrollToRefs, scrollToSection, isScrolled }) => {
                 href="#events"
                 onClick={(e) => {
                   e.preventDefault();
-                  handleLinkClick(scrollToRefs.eventRef);
+                  handleLinkClick(scrollToRefs.eventRef, "events");
                 }}
                 className="py-2 hover:text-gray-400 transition-colors duration-300"
                 style={{ fontSize: "1.5rem", padding: "1rem 1rem" }}
