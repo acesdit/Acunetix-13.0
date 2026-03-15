@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react';
 import TiltedCard from './TiltedCard';
-import LightRays from './LightRays';
+import ShapeGrid from './ShapeGrid';
 
 const sponsors = [
   {
@@ -20,21 +20,16 @@ const sponsors = [
 const Sponsors = forwardRef((props, ref) => {
   return (
     <section ref={ref} id="sponsors" className="relative w-full min-h-screen px-4 sm:px-6 lg:px-8 bg-black overflow-hidden flex items-center">
-      {/* LightRays background */}
-      <div className="absolute inset-0">
-        <LightRays
-          raysOrigin="top-center"
-          raysColor="#ffffff"
-          raysSpeed={1}
-          lightSpread={0.5}
-          rayLength={3}
-          followMouse={true}
-          mouseInfluence={0.1}
-          noiseAmount={0}
-          distortion={0}
-          pulsating={false}
-          fadeDistance={1}
-          saturation={1}
+      {/* ShapeGrid background */}
+      <div className="absolute inset-0" style={{ zIndex: 0 }}>
+        <ShapeGrid
+          direction="diagonal"
+          speed={0.5}
+          borderColor="#271E37"
+          squareSize={40}
+          hoverFillColor="#222"
+          shape="square"
+          hoverTrailAmount={0}
         />
       </div>
 
