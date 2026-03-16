@@ -127,76 +127,69 @@ const Event = forwardRef((props, ref) => {
   const initialIndex = eventsData.findIndex(e => e.id === 'ctrlaltelite');
   const startIndex = initialIndex !== -1 ? initialIndex : Math.floor(eventsData.length / 2);
   const [activeIndex, setActiveIndex] = useState(startIndex);
-  const isProgrammaticScroll = useRef(false);
-  const scrollTimeoutRef = useRef(null);
+
+  const scrollSnapTimeoutRef = useRef(null);
 
   const scrollToCard = useCallback((index) => {
     const container = scrollRef.current;
     if (!container) return;
-    const cards = container.children;
-    if (!cards[index]) return;
     
-    
-    const card = cards[index];
-    const containerCenter = container.offsetWidth / 2;
-    const cardCenter = card.offsetLeft + card.offsetWidth / 2;
-    
-    // Lock scroll observer during programmatic sliding
-    isProgrammaticScroll.current = true;
-    if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
-    scrollTimeoutRef.current = setTimeout(() => {
-      isProgrammaticScroll.current = false;
-    }, 600); // 600ms safely covers the native smooth scroll transition
-    
-    // Safely scroll horizontal ONLY, without causing vertical page jumps
-    container.scrollTo({
-      left: cardCenter - containerCenter,
-      behavior: 'smooth',
-    });
+    // 1. Temporarily disable CSS scroll snapping so it doesn't fight JS smooth scrolling (causes 'stuck' glitches)
+    container.style.scrollSnapType = 'none';
+    if (scrollSnapTimeoutRef.current) clearTimeout(scrollSnapTimeoutRef.current);
+
+    // 2. Wait slightly for React to render the active scaling (1.05x) before measuring widths!
+    setTimeout(() => {
+      if (!scrollRef.current) return;
+      const cards = scrollRef.current.children;
+      if (!cards[index]) return;
+      const card = cards[index];
+      const containerCenter = scrollRef.current.offsetWidth / 2;
+      const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+      
+      scrollRef.current.scrollTo({
+        left: cardCenter - containerCenter,
+        behavior: 'smooth',
+      });
+
+      // 3. Re-enable CSS scroll snapping after the smooth scroll finishes (~600ms)
+      scrollSnapTimeoutRef.current = setTimeout(() => {
+        if (scrollRef.current) scrollRef.current.style.scrollSnapType = 'x mandatory';
+      }, 600);
+    }, 50);
   }, []);
 
   // Center on mount
   useEffect(() => {
-    // Only center once on mount, wait for layout to settle
     const t = setTimeout(() => scrollToCard(activeIndex), 150);
     return () => clearTimeout(t);
   }, []);
 
-  // Smooth scroll sync - tracks the center-most card in real time
+  // Debounced scroll detection — only fires after scroll stops
   useEffect(() => {
     const container = scrollRef.current;
     if (!container) return;
-
-    let isTicking = false;
+    let timer = null;
 
     const onScroll = () => {
-      if (isProgrammaticScroll.current) return;
-      if (!isTicking) {
-        window.requestAnimationFrame(() => {
-          const center = container.scrollLeft + container.offsetWidth / 2;
-          let best = 0;
-          let bestDist = Infinity;
-
-          for (let i = 0; i < container.children.length; i++) {
-            const child = container.children[i];
-            const childCenter = child.offsetLeft + child.offsetWidth / 2;
-            const d = Math.abs(center - childCenter);
-            if (d < bestDist) {
-              bestDist = d;
-              best = i;
-            }
-          }
-
-          setActiveIndex(best);
-          isTicking = false;
-        });
-        isTicking = true;
-      }
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        const center = container.scrollLeft + container.offsetWidth / 2;
+        let best = 0;
+        let bestDist = Infinity;
+        for (let i = 0; i < container.children.length; i++) {
+          const child = container.children[i];
+          const d = Math.abs(center - (child.offsetLeft + child.offsetWidth / 2));
+          if (d < bestDist) { bestDist = d; best = i; }
+        }
+        setActiveIndex(best);
+      }, 120);
     };
 
     container.addEventListener('scroll', onScroll, { passive: true });
     return () => {
       container.removeEventListener('scroll', onScroll);
+      clearTimeout(timer);
     };
   }, []);
 
