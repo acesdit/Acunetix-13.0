@@ -16,6 +16,7 @@ import SchedulePageNew_2 from './pages/SchedulePageNew_2'
 import SchedulePageNew_3 from './pages/SchedulePageNew_3'
 import EventDetails from './components/EventDetails'
 
+
 function forceScrollTop() {
   window.scrollTo(0, 0);
   document.documentElement.scrollTop = 0;
@@ -26,13 +27,14 @@ function HomePage({ scrollToRefs, scrollToSection, isScrolled }) {
   const location = useLocation();
 
   useEffect(() => {
-    // If we're returning from an event page, scroll instantly to the events section
+ 
     if (location.state?.scrollToEvents && scrollToRefs.eventRef.current) {
-      setTimeout(() => {
+      const timer = setTimeout(() => {
         scrollToRefs.eventRef.current.scrollIntoView({ behavior: 'auto', block: 'start' });
-        // Clear state so it doesn't fire again on re-renders
+       
         window.history.replaceState({}, document.title);
       }, 50);
+      return () => clearTimeout(timer);
     }
   }, [location.state, scrollToRefs.eventRef]);
 
@@ -52,14 +54,14 @@ function HomePage({ scrollToRefs, scrollToSection, isScrolled }) {
           isScrolled={isScrolled}
         />
 
-      <main className="grow bg-black">
-        <Hero ref={scrollToRefs.heroRef} />
-        <About ref={scrollToRefs.aboutRef} />
-        <Event ref={scrollToRefs.eventRef} />
-        <Schedule ref={scrollToRefs.scheduleRef} />
-        <Sponsors ref={scrollToRefs.sponsorsRef} />
-        <Reel ref={scrollToRefs.reelRef} />
-      </main>
+        <main className="grow bg-black">
+          <Hero ref={scrollToRefs.heroRef} />
+          <About ref={scrollToRefs.aboutRef} />
+          <Event ref={scrollToRefs.eventRef} />
+          <Schedule ref={scrollToRefs.scheduleRef} />
+          <Sponsors ref={scrollToRefs.sponsorsRef} />
+          <Reel ref={scrollToRefs.reelRef} />
+        </main>
 
         <Footer
           scrollToRefs={scrollToRefs}
@@ -72,8 +74,7 @@ function HomePage({ scrollToRefs, scrollToSection, isScrolled }) {
 
 function App() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const location = useLocation();
-
+  
   const heroRef = useRef(null);
   const aboutRef = useRef(null);
   const scheduleRef = useRef(null);
@@ -82,14 +83,15 @@ function App() {
   const reelRef = useRef(null);
 
   const scrollToRefs = { heroRef, aboutRef, scheduleRef, eventRef, sponsorsRef, reelRef };
+
   const scrollToSection = (ref) => {
     if (ref && ref.current) {
       ref.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   };
 
-  // Handle scroll event for navbar background and disable native scroll restoration
   useEffect(() => {
+    
     if ('scrollRestoration' in window.history) {
       window.history.scrollRestoration = 'manual';
     }
@@ -104,7 +106,6 @@ function App() {
 
   return (
     <div className="min-h-screen flex flex-col bg-black">
-    <div className="min-h-screen flex flex-col">
       <ScrollToTop />
       <Routes>
         <Route
@@ -124,7 +125,7 @@ function App() {
       </Routes>
       <Chatbot />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
