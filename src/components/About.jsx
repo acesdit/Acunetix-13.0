@@ -41,7 +41,6 @@ const About = forwardRef((props, ref) => {
         <h2 className="about-title text-5xl md:text-8xl lg:text-9xl font-black uppercase tracking-wider text-white mb-4">
           About Us
         </h2>
-        <div className="w-16 md:w-24 h-1 bg-cyan-400 mx-auto mb-8"></div>
         
         <p className="about-paragraph text-lg md:text-2xl lg:text-3xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
           Acunetix 13.0 is a flagship event organised by ACES and CSI, offering
