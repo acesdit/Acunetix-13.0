@@ -29,7 +29,7 @@ const eventsData = [
         date: 'March 7, 2026',
         time: '11:00 AM',
         venue: 'Seminar Hall',
-        registerLink: 'https://docs.google.com/forms/d/e/1FAIpQLSeQS65gei57zzmvXoTZlgyyjDPxYD4Yb0D3bujmCEXVRVaDvw/viewform?usp=publish-editor',
+        registerLink: '#',
         // Poster: warm sandy/orange beige bg, orange clipboards, brown text
         theme: {
             primary: '#d4883c',
@@ -60,7 +60,7 @@ const eventsData = [
         date: 'March 7, 2026',
         time: '10:00 AM',
         venue: 'Lab 1',
-        registerLink: 'https://docs.google.com/forms/d/e/1FAIpQLSeQS65gei57zzmvXoTZlgyyjDPxYD4Yb0D3bujmCEXVRVaDvw/viewform?usp=publish-editor',
+        registerLink: '#',
         // Poster: dark navy blue bg (#1a2744), yellow BUG title text, blue code icons
         theme: {
             primary: '#e8c840',
@@ -91,7 +91,7 @@ const eventsData = [
         date: 'March 7, 2026',
         time: '09:00 AM',
         venue: 'Lab 2',
-        registerLink: 'https://docs.google.com/forms/d/e/1FAIpQLSeQS65gei57zzmvXoTZlgyyjDPxYD4Yb0D3bujmCEXVRVaDvw/viewform?usp=publish-editor',
+        registerLink: '#',
         // Poster: deep purple bg (#5b2d8e), white bold title, cyan robot eyes, purple chat bubbles
         theme: {
             primary: '#9b59d0',
@@ -122,7 +122,7 @@ const eventsData = [
         date: 'March 7, 2026',
         time: '01:00 PM',
         venue: 'Room 301',
-        registerLink: 'https://docs.google.com/forms/d/e/1FAIpQLSeQS65gei57zzmvXoTZlgyyjDPxYD4Yb0D3bujmCEXVRVaDvw/viewform?usp=publish-editor',
+        registerLink: '#',
         // Poster: brown/sepia vintage bg (#6b4226), dark orange title, playing cards, question marks
         theme: {
             primary: '#c26a18',
@@ -153,7 +153,7 @@ const eventsData = [
         date: 'March 7, 2026',
         time: '02:00 PM',
         venue: 'Lab 3',
-        registerLink: 'https://docs.google.com/forms/d/e/1FAIpQLSeQS65gei57zzmvXoTZlgyyjDPxYD4Yb0D3bujmCEXVRVaDvw/viewform?usp=publish-editor',
+        registerLink: '#',
         // Poster: dark teal/dark cyan-green bg (#0f3038), aqua/teal highlights (#4ac8c8), code editor
         theme: {
             primary: '#4ac8c8',
@@ -184,7 +184,7 @@ const eventsData = [
         date: 'March 7, 2026',
         time: '03:00 PM',
         venue: 'Auditorium',
-        registerLink: 'https://docs.google.com/forms/d/e/1FAIpQLSeQS65gei57zzmvXoTZlgyyjDPxYD4Yb0D3bujmCEXVRVaDvw/viewform?usp=publish-editor',
+        registerLink: '#',
         // Poster: dark navy blue bg (#1a2856), bright yellow trophy (#e8d020), yellow bottom section
         theme: {
             primary: '#e8d020',
@@ -215,7 +215,7 @@ const eventsData = [
         date: 'March 7, 2026',
         time: '10:00 AM',
         venue: 'Gaming Zone',
-        registerLink: 'https://docs.google.com/forms/d/e/1FAIpQLSeQS65gei57zzmvXoTZlgyyjDPxYD4Yb0D3bujmCEXVRVaDvw/viewform?usp=publish-editor',
+        registerLink: '#',
         // Poster: very dark/black bg, fire orange explosions (#e85020), dark smoky, military, orange sidebar
         theme: {
             primary: '#e85020',
@@ -246,7 +246,7 @@ const eventsData = [
         date: 'March 7, 2026',
         time: '12:00 PM',
         venue: 'Room 105',
-        registerLink: 'https://docs.google.com/forms/d/e/1FAIpQLSeQS65gei57zzmvXoTZlgyyjDPxYD4Yb0D3bujmCEXVRVaDvw/viewform?usp=publish-editor',
+        registerLink: '#',
         // Poster: dark indigo-purple bg (#1a1040), bright violet-blue door, purple jigsaw pieces, purple glow rays
         theme: {
             primary: '#7b68ee',
@@ -277,7 +277,7 @@ const eventsData = [
         date: 'March 7, 2026',
         time: '11:00 AM',
         venue: 'Campus Grounds',
-        registerLink: 'https://docs.google.com/forms/d/e/1FAIpQLSeQS65gei57zzmvXoTZlgyyjDPxYD4Yb0D3bujmCEXVRVaDvw/viewform?usp=publish-editor',
+        registerLink: '#',
         // Poster: dark charcoal/brown border, sandy/tan parchment center, dark brown title text, gold coins
         theme: {
             primary: '#c49a5c',
