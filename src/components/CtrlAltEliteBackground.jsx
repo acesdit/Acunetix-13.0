@@ -22,20 +22,22 @@ export default function CtrlAltEliteBackground() {
   return (
     <section className="ctrlelite-bg-section pointer-events-auto">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-      {rows.map((_, i) => (
-        <div className="ctrlelite-row pointer-events-none" key={i}>
-          <div className="pointer-events-none">
-            {icons.map((icon, idx) => (
-              <i key={`a-${idx}`} className={`${icon} pointer-events-auto`}></i>
-            ))}
+      <div className="ctrlelite-wrapper pointer-events-none">
+        {rows.map((_, i) => (
+          <div className="ctrlelite-row pointer-events-none" key={i}>
+            <div className="pointer-events-none">
+              {icons.map((icon, idx) => (
+                <i key={`a-${idx}`} className={`${icon} pointer-events-auto`}></i>
+              ))}
+            </div>
+            <div className="pointer-events-none">
+              {icons.map((icon, idx) => (
+                <i key={`b-${idx}`} className={`${icon} pointer-events-auto`}></i>
+              ))}
+            </div>
           </div>
-          <div className="pointer-events-none">
-            {icons.map((icon, idx) => (
-              <i key={`b-${idx}`} className={`${icon} pointer-events-auto`}></i>
-            ))}
-          </div>
-        </div>
-      ))}
+        ))}
+      </div>
       <style dangerouslySetInnerHTML={{
         __html: `
         .ctrlelite-bg-section {
@@ -46,21 +48,30 @@ export default function CtrlAltEliteBackground() {
             height: 100vh;
             background: #1a1a1a;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
             overflow: hidden;
             z-index: 0;
         }
 
+        .ctrlelite-wrapper {
+            position: absolute;
+            width: 250vw;
+            height: 250vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transform: rotate(-30deg);
+        }
+
         .ctrlelite-row {
             position: relative;
-            width: 200%;
+            width: 100%;
             display: flex;
             padding: 10px 0;
             white-space: nowrap;
             font-size: 64px;
-            transform: rotate(-30deg);
         }
 
         .ctrlelite-row i {

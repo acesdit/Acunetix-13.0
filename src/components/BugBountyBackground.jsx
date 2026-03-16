@@ -29,44 +29,55 @@ export default function BugBountyBackground() {
   return (
     <section className="bugbounty-bg-section pointer-events-auto">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-      {rows.map((_, i) => (
-        <div className="bugbounty-row pointer-events-none" key={i}>
-          <div className="pointer-events-none">
-            {icons.map((icon, idx) => (
-              <i key={`a-${idx}`} className={`${icon} pointer-events-auto`}></i>
-            ))}
+      <div className="bugbounty-wrapper pointer-events-none">
+        {rows.map((_, i) => (
+          <div className="bugbounty-row pointer-events-none" key={i}>
+            <div className="pointer-events-none">
+              {icons.map((icon, idx) => (
+                <i key={`a-${idx}`} className={`${icon} pointer-events-auto`}></i>
+              ))}
+            </div>
+            <div className="pointer-events-none">
+              {icons.map((icon, idx) => (
+                <i key={`b-${idx}`} className={`${icon} pointer-events-auto`}></i>
+              ))}
+            </div>
           </div>
-          <div className="pointer-events-none">
-            {icons.map((icon, idx) => (
-              <i key={`b-${idx}`} className={`${icon} pointer-events-auto`}></i>
-            ))}
-          </div>
-        </div>
-      ))}
+        ))}
+      </div>
       <style dangerouslySetInnerHTML={{__html: `
         .bugbounty-bg-section {
-            position: absolute;
+            position: fixed;
             width: 100vw;
             height: 100vh;
             background: #0e0d0d;
             display: flex;
-            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             overflow: hidden;
             z-index: 0;
             top: 0;
             left: 0;
         }
 
+        .bugbounty-wrapper {
+            position: absolute;
+            width: 250vw;
+            height: 250vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transform: rotate(-30deg);
+        }
+
         .bugbounty-row {
             position: relative;
-            top: -50%;
-            left: -18%;
             width: 100%;
             display: flex;
             padding: 10px 0;
             white-space: nowrap;
             font-size: 64px;
-            transform: rotate(-30deg);
         }
 
         .bugbounty-row i {
