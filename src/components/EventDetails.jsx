@@ -7,6 +7,7 @@ import gamestormFg from '../assets/foreground gamestrom.png';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import FlickeringGrid from './FlickeringGrid';
+import GridScan from './GridScan';
 import MatrixRain from './MatrixRain';
 import LetterGlitch from './LetterGlitch';
 import InteractiveParticleField from './InteractiveParticleField';
@@ -167,6 +168,34 @@ const EventDetails = () => {
                     </div>
                 </div>
             )}
+            {id === 'timescape' && (
+    <div className="fixed inset-0 w-full h-full z-1 pointer-events-none bg-[#08000c]">
+        <GridScan
+            sensitivity={0.55}
+            lineThickness={1}
+            gridScale={0.1}
+            scanOpacity={0.30} 
+            enablePost={true}
+            bloomIntensity={0.5} // Lowered to keep the purple from washing out
+            noiseIntensity={0.01}
+            
+           
+            linesColor="#260e35" 
+            
+            
+            scanColor={theme.primary} 
+            
+           
+            chromaticAberration={0.001} 
+            
+            
+            scanSoftness={5}
+            scanGlow={0.8}
+        />
+        {/* This vignette helps hide any residual blue in the corners */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-[#08000c]" />
+    </div>
+)}
 
             {/* ShapeGrid Animation for DPL */}
             {id === 'dpl' && (
