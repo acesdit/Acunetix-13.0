@@ -15,82 +15,6 @@ import BugBountyBackground from './BugBountyBackground';
 import CtrlAltEliteBackground from './CtrlAltEliteBackground';
 import ShapeGrid from './ShapeGrid';
 
-/* ── Particle Canvas — dramatic floating particles ── */
-const ParticleCanvas = ({ color }) => {
-    const canvasRef = useRef(null);
-    const animRef = useRef(null);
-    const particlesRef = useRef([]);
-
-    useEffect(() => {
-        const canvas = canvasRef.current;
-        if (!canvas) return;
-        const ctx = canvas.getContext('2d');
-
-        const resize = () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        };
-        resize();
-        window.addEventListener('resize', resize);
-
-        // More particles, bigger, more visible
-        const count = 90;
-        particlesRef.current = Array.from({ length: count }, () => ({
-            x: Math.random() * canvas.width,
-            y: Math.random() * canvas.height,
-            size: Math.random() * 3 + 0.8,
-            speedX: (Math.random() - 0.5) * 0.5,
-            speedY: (Math.random() - 0.5) * 0.5 - 0.2,
-            opacity: Math.random() * 0.7 + 0.2,
-            pulse: Math.random() * Math.PI * 2,
-        }));
-
-        const animate = () => {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particlesRef.current.forEach((p) => {
-                p.x += p.speedX;
-                p.y += p.speedY;
-                p.pulse += 0.025;
-                const alpha = p.opacity * (0.5 + 0.5 * Math.sin(p.pulse));
-
-                if (p.x < 0) p.x = canvas.width;
-                if (p.x > canvas.width) p.x = 0;
-                if (p.y < 0) p.y = canvas.height;
-                if (p.y > canvas.height) p.y = 0;
-
-                // Main dot
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-                ctx.fillStyle = color + Math.round(alpha * 255).toString(16).padStart(2, '0');
-                ctx.fill();
-
-                // Big soft glow around each particle
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, p.size * 5, 0, Math.PI * 2);
-                const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.size * 5);
-                g.addColorStop(0, color + Math.round(alpha * 100).toString(16).padStart(2, '0'));
-                g.addColorStop(1, color + '00');
-                ctx.fillStyle = g;
-                ctx.fill();
-            });
-            animRef.current = requestAnimationFrame(animate);
-        };
-        animate();
-
-        return () => {
-            cancelAnimationFrame(animRef.current);
-            window.removeEventListener('resize', resize);
-        };
-    }, [color]);
-
-    return (
-        <canvas
-            ref={canvasRef}
-            className="fixed inset-0 pointer-events-none z-1"
-        />
-    );
-};
-
 /* ── Marquee Strip ────────────────────────────────── */
 const MarqueeStrip = ({ words, color }) => (
     <div
@@ -498,7 +422,7 @@ const EventDetails = () => {
 
                         {/* Right column - Floating poster (desktop only) */}
                         <motion.div
-                            className="hidden lg:block shrink-0"
+                            className="hidden lg:block shrink-0 py-8"
                             style={{ width: 'clamp(300px, 25vw, 420px)' }}
                             initial={{ opacity: 0, x: 60, rotate: 3 }}
                             animate={{ opacity: 1, x: 0, rotate: 0 }}

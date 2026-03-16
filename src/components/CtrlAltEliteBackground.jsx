@@ -39,23 +39,23 @@ export default function CtrlAltEliteBackground() {
       <style dangerouslySetInnerHTML={{
         __html: `
         .ctrlelite-bg-section {
-            position: absolute;
-            width: 400vw;
-            height: 225vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
             background: #1a1a1a;
             display: flex;
             flex-direction: column;
+            align-items: center;
+            justify-content: center;
             overflow: hidden;
             z-index: 0;
-            top: -25;
-            left: -25;
         }
 
         .ctrlelite-row {
             position: relative;
-            top: -50%;
-            left: -18%;
-            width: 100%;
+            width: 200%;
             display: flex;
             padding: 10px 0;
             white-space: nowrap;
