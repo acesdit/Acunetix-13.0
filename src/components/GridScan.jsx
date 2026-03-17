@@ -816,7 +816,17 @@ export const GridScan = ({
 };
 
 function srgbColor(hex) {
-    const c = new THREE.Color(hex);
+    // Handle 'transparent' and invalid color values
+    let colorValue = hex;
+    if (!hex || hex === 'transparent') {
+        colorValue = '#000000'; // default to black
+    }
+    let c;
+    try {
+        c = new THREE.Color(colorValue);
+    } catch (e) {
+        c = new THREE.Color('#000000');
+    }
     return c.convertSRGBToLinear();
 }
 

@@ -1,4 +1,60 @@
- /* Glitch effect from CodePen (adapted for React/vanilla CSS) */
+/* Responsive Acunetix 13.0 Hero Heading */
+.acunetix-hero-heading {
+  font-family: 'Audiowide Local', 'Audiowide', Arial, sans-serif;
+  font-weight: 400;
+  font-size: clamp(2.2rem, 12vw, 8rem);
+  line-height: 1.05;
+  letter-spacing: 0.03em;
+  color: #fff;
+  text-transform: uppercase;
+  text-align: center;
+  position: relative;
+  white-space: nowrap;
+  padding: 0 1vw;
+  width: 100vw;
+  max-width: 100vw;
+  margin: 0 auto;
+}
+
+@media (max-width: 900px) {
+  .acunetix-hero-heading {
+    font-size: clamp(1.5rem, 16vw, 5rem);
+    padding: 0 2vw;
+    line-height: 1.1;
+  }
+}
+
+@media (max-width: 600px) {
+  .acunetix-hero-heading {
+    font-size: clamp(1.1rem, 20vw, 3rem);
+    padding: 0 3vw;
+    line-height: 1.15;
+    white-space: normal;
+  }
+}
+
+/* Responsive timer styles */
+.acunetix-timer {
+  font-size: clamp(1.2rem, 6vw, 3rem);
+  min-width: 180px;
+  text-align: center;
+  padding: 0.5em 1.5em;
+  border-radius: 0.75em;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  margin-top: 1em;
+  box-shadow: 0 2px 16px 0 rgba(0,0,0,0.2);
+}
+
+@media (max-width: 600px) {
+  .acunetix-timer {
+    font-size: clamp(1rem, 8vw, 2rem);
+    min-width: 120px;
+    padding: 0.5em 1em;
+  }
+}
+
+/* Glitch effect from CodePen (adapted for React/vanilla CSS) */
 .glitch {
   position: relative;
   margin: 0 auto;
