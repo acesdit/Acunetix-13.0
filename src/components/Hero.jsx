@@ -81,16 +81,9 @@ const Hero = forwardRef((props, ref) => {
           ACUNETIX 13.0
         </h1>
 
-        {/* New Sub-heading Quote */}
-        <p 
-          className="text-white/90  tracking-[0.15em] mt-2 mb-8"
-          style={{ 
-            fontFamily: "'IM_Fell_DW_Pica_sc', bold",
-            fontSize: 'clamp(0.8rem, 2vw, 1.5rem)'
-          }}
-        >
-          Where the Journey is the Challenge.
-        </p>
+        <p className="im-fell-pica text-white/90 tracking-[0.15em] mt-2 mb-8">
+  Where the Journey is the Challenge
+</p>
         
         <div className="mt-4 md:mt-8 w-full flex flex-col items-center">
           <span className="block text-sm md:text-xl font-semibold text-white/70 tracking-[0.4em] mb-8 uppercase">

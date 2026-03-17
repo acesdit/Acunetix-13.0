@@ -48,7 +48,7 @@ const EventCard = React.memo(({ event, isActive }) => {
             <img
               src={event.poster}
               alt={event.name}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-contain object-top"
             />
           ) : (
             <div
