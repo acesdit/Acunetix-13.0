@@ -58,7 +58,7 @@ function Reel() {
           
         </h2>
 
-        <div className="flex overflow-x-auto pb-4 scrollbar-hide md:grid md:grid-cols-3 md:gap-6 lg:gap-8 md:overflow-visible">
+        <div className="flex overflow-x-auto gap-[10px] [-webkit-overflow-scrolling:touch] pb-4 scrollbar-hide md:grid md:grid-cols-3 md:gap-6 lg:gap-8 md:overflow-visible">
           {/* First Reel */}
           <a
           href="https://www.instagram.com/acunetix.dit/reel/DHblKP0qE4C/"
