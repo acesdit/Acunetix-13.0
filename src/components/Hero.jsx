@@ -83,11 +83,8 @@ const Hero = forwardRef((props, ref) => {
 
         {/* New Sub-heading Quote */}
         <p 
-          className="text-white/90 uppercase tracking-[0.15em] mt-2 mb-8"
-          style={{ 
-            fontFamily: "'Audiowide', bold",
-            fontSize: 'clamp(0.8rem, 2vw, 1.5rem)'
-          }}
+          className="text-white/90  tracking-[0.15em] mt-2 mb-8 im-fell-pica"
+          style={{ fontSize: 'clamp(0.8rem, 2vw, 1.5rem)' }}
         >
           Where the Journey is the Challenge.
         </p>

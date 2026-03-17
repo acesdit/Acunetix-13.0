@@ -1,3 +1,19 @@
+.about-im-fell-pica {
+  font-family: 'IM Fell DW Pica SC', serif !important;
+  font-size: inherit !important;
+}
+@font-face {
+  font-family: 'IM Fell DW Pica SC';
+  src: url('./assets/fonts/IM_Fell_DW_Pica_SC/IMFellDWPicaSC-Regular.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+.im-fell-pica {
+  font-family: 'IM Fell DW Pica SC', serif !important;
+  font-size: clamp(1.5rem, 3vw, 2.5rem) !important;
+}
 /* Responsive Acunetix 13.0 Hero Heading */
 .acunetix-hero-heading {
   font-family: 'Audiowide Local', 'Audiowide', Arial, sans-serif;
