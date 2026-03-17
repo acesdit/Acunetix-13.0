@@ -1,7 +1,7 @@
 import React from "react";
-import video1 from "../assets/Reel-Acunetix5.mp4";
-import video2 from "../assets/Reel-Acunetix6.mp4";
-import video3 from "../assets/Reel-Acunetix7.mp4";
+import video1 from "../assets/Ctrl_reel_1.webm";
+import video2 from "../assets/er_reel_2.webm";
+import video3 from "../assets/cof_reel_3.webm";
 
 function Reel() {
   return (
@@ -43,7 +43,7 @@ function Reel() {
                 preload="auto"
               >
                 <source src={video1}
-                 type="video/mp4" />
+                 type="video/webm" />
                 Your browser does not support the video tag.
               </video>
             </div>
@@ -66,7 +66,7 @@ function Reel() {
                 preload="auto"
               >
                 <source src={video2}
-                 type="video/mp4" />
+                 type="video/webm" />
                 Your browser does not support the video tag.
               </video>
             </div>
@@ -90,7 +90,7 @@ function Reel() {
                 preload="auto"
               >
                 <source src={video3}
-                 type="video/mp4" />
+                 type="video/webm" />
                 Your browser does not support the video tag.
               </video>
             </div>

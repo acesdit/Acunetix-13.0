@@ -4,7 +4,6 @@ import { CometCard } from './comet-card';
 import day1Svg from '../assets/cards/day-1.svg';
 import day2Svg from '../assets/cards/day-2.svg';
 import day3Svg from '../assets/cards/day-3.svg';
-import Particles from './Particles';
 
 const events = [
     { id: 1, title: 'Day 1', subtitle: 'Opening Ceremony', image: day1Svg },

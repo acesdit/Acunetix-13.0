@@ -1,3 +1,15 @@
+@font-face {
+  font-family: 'IM Fell DW Pica SC';
+  src: url('./assets/fonts/IM_Fell_DW_Pica_SC/IMFellDWPicaSC-Regular.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+.im-fell-pica {
+  font-family: 'IM Fell DW Pica SC', serif !important;
+  font-size: clamp(1.5rem, 3vw, 2.5rem) !important;
+}
 /* Responsive Acunetix 13.0 Hero Heading */
 .acunetix-hero-heading {
   font-family: 'Audiowide Local', 'Audiowide', Arial, sans-serif;
@@ -160,42 +172,10 @@
 }
 
 @font-face {
-  font-family: 'Bitcount Prop Double';
-  src: url('./assets/fonts/bitcount/BitcountPropDouble-Regular.ttf') format('truetype');
+  font-family: 'Google Sans Local';
+  src: url('./assets/fonts/Google_Sans/GoogleSans-VariableFont_GRAD,opsz,wght.ttf') format('truetype');
   font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Bitcount Prop Double';
-  src: url('./assets/fonts/bitcount/BitcountPropDouble-Bold.ttf') format('truetype');
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Bitcount Prop 2';
-  src: url('./assets/fonts/bitcount2/BitcountPropDouble_Roman-Regular.ttf') format('truetype');
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Bitcount Prop 2';
-  src: url('./assets/fonts/bitcount2/BitcountPropDouble_Roman-Bold.ttf') format('truetype');
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'DTC Winchester';
-  src: local('DTC Winchester Thick'), local('DTC Winchester');
-  font-style: normal;
-  font-weight: 700 900;
+  font-weight: 300 700;
   font-display: swap;
 }
 

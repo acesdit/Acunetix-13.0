@@ -1,18 +1,13 @@
-import React, { useEffect, useRef, useCallback } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import eventsData from '../data/eventsData';
-import gamestormBg from '../assets/gamestrom bg.jpg';
-import gamestormFg from '../assets/foreground gamestrom.png';
 import Navbar from './Navbar';
 import Footer from './Footer';
-import FlickeringGrid from './FlickeringGrid';
 import GridScan from './GridScan';
 import MatrixRain from './MatrixRain';
-import LetterGlitch from './LetterGlitch';
 import InteractiveParticleField from './InteractiveParticleField';
 import FloatingLines from './FloatingLines';
-import BugBountyBackground from './BugBountyBackground';
 import CtrlAltEliteBackground from './CtrlAltEliteBackground';
 import ShapeGrid from './ShapeGrid';
 
@@ -94,35 +89,21 @@ const EventDetails = () => {
     }
     const invertedPrimary = invertHex(theme.primary);
 
-
-    // GameStorm custom background
-    const isGameStorm = id === 'gamestorm';
-
     return (
         <motion.div
-            className="min-h-screen relative flex flex-col overflow-x-hidden bg-black"
-            style={isGameStorm ? { background: `url(${gamestormBg}) center/cover, ${theme.gradient}` } : (id === 'treasure-trove' || id === 'dpl' ? { background: '#000' } : { background: theme.gradient })}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+            key={`event-${id}`}
+            className="min-h-screen relative flex flex-col overflow-x-hidden bg-black text-white"
+            style={(id === 'treasure-trove' || id === 'dpl' ? { background: '#000' } : { background: theme.gradient })}
+            initial={{ opacity: 0, position: 'absolute', width: '100%', top: 0, left: 0 }}
+            animate={{ opacity: 1, position: 'relative' }}
+            exit={{ opacity: 0, position: 'absolute', width: '100%', top: 0, left: 0, zIndex: 50 }}
             transition={{ duration: 0.6 }}
         >
-            {/* GameStorm: normal background image */}
-            {isGameStorm && (
-                <div className="pointer-events-none absolute inset-0 z-0">
-                    <div
-                        className="absolute inset-0 w-full h-full"
-                        style={{
-                            background: `url(${gamestormBg}) center/cover no-repeat`,
-                        }}
-                    />
-                </div>
-            )}
             {/* ...existing code... */}
 
 
-            {/* Matrix rain for build-a-thon and codeoflies, FlickeringGrid for ctrlaltelite, all with bg-slate-900/90 overlay */}
-            {(id === 'build-a-thon' || id === 'codeoflies') && (
+            {/* Matrix rain for codeoflies */}
+            {id === 'codeoflies' && (
                 <>
                     <MatrixRain color={theme.primary} />
                     <div className="fixed inset-0 w-full h-full z-0 pointer-events-none bg-slate-900" />
@@ -132,13 +113,6 @@ const EventDetails = () => {
             {id === 'ctrlaltelite' && (
                 <div className="fixed inset-0 w-full h-full z-0 pointer-events-none">
                     <CtrlAltEliteBackground />
-                </div>
-            )}
-
-            {/* Custom Icon Matrix background for bugbounty */}
-            {id === 'bugbounty' && (
-                <div className="fixed inset-0 w-full h-full z-0 pointer-events-none">
-                    <BugBountyBackground />
                 </div>
             )}
 
@@ -169,33 +143,33 @@ const EventDetails = () => {
                 </div>
             )}
             {id === 'timescape' && (
-    <div className="fixed inset-0 w-full h-full z-1 pointer-events-none bg-[#08000c]">
-        <GridScan
-            sensitivity={0.55}
-            lineThickness={1}
-            gridScale={0.1}
-            scanOpacity={0.30} 
-            enablePost={true}
-            bloomIntensity={0.5} // Lowered to keep the purple from washing out
-            noiseIntensity={0.01}
-            
-           
-            linesColor="#260e35" 
-            
-            
-            scanColor={theme.primary} 
-            
-           
-            chromaticAberration={0.001} 
-            
-            
-            scanSoftness={5}
-            scanGlow={0.8}
-        />
-        {/* This vignette helps hide any residual blue in the corners */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-[#08000c]" />
-    </div>
-)}
+                <div className="fixed inset-0 w-full h-full z-1 pointer-events-none bg-[#08000c]">
+                    <GridScan
+                        sensitivity={0.55}
+                        lineThickness={1}
+                        gridScale={0.1}
+                        scanOpacity={0.30}
+                        enablePost={true}
+                        bloomIntensity={0.5} // Lowered to keep the purple from washing out
+                        noiseIntensity={0.01}
+
+
+                        linesColor="#260e35"
+
+
+                        scanColor={theme.primary}
+
+
+                        chromaticAberration={0.001}
+
+
+                        scanSoftness={5}
+                        scanGlow={0.8}
+                    />
+                    {/* This vignette helps hide any residual blue in the corners */}
+                    <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-[#08000c]" />
+                </div>
+            )}
 
             {/* ShapeGrid Animation for DPL */}
             {id === 'dpl' && (
@@ -257,7 +231,11 @@ const EventDetails = () => {
                                     border: `2px solid ${theme.primary}40`,
                                 }}
                             >
-                                <img src={event.poster} alt={event.name} className="w-full h-auto" />
+                                <img
+                                    src={event.poster}
+                                    alt={event.name}
+                                    className="w-full h-auto block"
+                                />
                             </div>
                         </motion.div>
 
@@ -425,7 +403,7 @@ const EventDetails = () => {
                                 <img
                                     src={event.poster}
                                     alt={event.name}
-                                    className="w-full h-auto"
+                                    className="w-full h-auto block"
                                 />
                                 {/* ...poster top glow removed... */}
                             </motion.div>
@@ -465,13 +443,43 @@ const EventDetails = () => {
                     </div>
                 </motion.div>
                 */}
+
+                {/* Registration instructions */}
+                <motion.div
+                    className="px-4 sm:px-6 md:px-12 lg:px-20 mt-12"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 1.05 }}
+                >
+                    <div
+                        className="w-full max-w-7xl mx-auto rounded-xl border p-5 md:p-7"
+                        style={{
+                            borderColor: `${theme.primary}45`,
+                            backgroundColor: 'rgba(0, 0, 0, 0.45)',
+                            backdropFilter: 'blur(4px)',
+                        }}
+                    >
+                        <p
+                            className="text-2xl md:text-4xl font-black uppercase mb-6 tracking-[0.24em]"
+                            style={{ color: theme.primary }}
+                        >
+                            Instructions
+                        </p>
+
+                        <ol className="list-decimal pl-7 space-y-5 text-white text-2xl md:text-3xl leading-10 md:leading-[3.2rem] font-black">
+                            <li>Please ensure that all the details provided in the form are accurate and complete.</li>
+                            <li>The payment made must match the event you have registered for; incorrect selections or payments will not be accepted or refunded.</li>
+                            <li>Further details and updates regarding the event will be communicated via email.</li>
+                        </ol>
+                    </div>
+                </motion.div>
             </div>
 
             {/* Bottom marquee */}
             <MarqueeStrip words={theme.marqueeWords} color={theme.primary} />
             {/* Sticky Navbar at bottom */}
             <Footer scrollToRefs={{ heroRef: true }} scrollToSection={() => navigate('/')} />
-            <Navbar className="fixed bottom-0 left-0 w-full z-50" />
+            <Navbar scrollToRefs={{}} scrollToSection={() => {}} isScrolled={true} />
         </motion.div>
     );
 };

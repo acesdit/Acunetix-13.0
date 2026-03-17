@@ -1,10 +1,7 @@
 import Brainiac from '../assets/Brainiac.webp';
-import Bugbounty from '../assets/Bugbounty.webp';
-import BuildAThon from '../assets/build-a-thon.webp';
 import CodeOfLies from '../assets/codeOfLies.webp';
 import CtrlAltElite from '../assets/CtrlAltElite.webp';
 import Dpl from '../assets/dpl.webp';
-import GameStorm from '../assets/GameStorm.webp';
 import TimeScape from '../assets/timeScape.webp';
 import TreasureTrove from '../assets/treasure-trove.webp';
 
@@ -13,22 +10,22 @@ const eventsData = [
         id: 'brainiac',
         name: 'BRAINIAC',
         tagline: '"Think Fast, Think Smart"',
-        category: 'Quiz Competition',
+        category: 'Placement Preparation Challenge',
         categoryIcon: '🧠',
         poster: Brainiac,
         description:
-            'A high-voltage quiz battle that pushes your knowledge to the limit. From tech trivia to rapid-fire rounds, only the sharpest minds survive. Gear up for an electrifying challenge that rewards intellect, speed, and nerves of steel.',
+            'A placement preparation challenge designed to test your aptitude, communication, and interview skills through three intense rounds—Aptitude Test, Group Discussion, and Mock Interview. Compete solo, refine your problem-solving abilities, and gain real-world interview experience. Showcase your potential and take a step closer to your dream job!',
         highlights: [
-            'Multiple Rounds: Tech, GK, Rapid Fire',
-            'Team Size: 2-3',
-            'Buzzer Rounds with Penalties',
-            'Live Leaderboard',
+            'Multiple Rounds: Aptitude Test, Group Discussion, Mock Interview',
+            'Solo Competition Format',
+            'Real-World Interview Simulation',
+            'Boost Placement Readiness',
         ],
-        entryFee: '₹59',
-        prizePool: '₹4,000',
-        date: 'March 7, 2026',
-        time: '11:00 AM',
-        venue: 'Seminar Hall',
+        entryFee: '₹79',
+        prizePool: '₹3,000',
+        date: 'March 27,28,29 2026',
+        //time: '11:00 AM',
+        //venue: 'Seminar Hall',
         registerLink: '#',
         // Poster: warm sandy/orange beige bg, orange clipboards, brown text
         theme: {
@@ -41,68 +38,6 @@ const eventsData = [
         },
     },
     {
-        id: 'bugbounty',
-        name: 'BUG BOUNTY',
-        tagline: '"Hunt The Bugs, Claim The Bounty"',
-        category: 'Debugging Challenge',
-        categoryIcon: '🐛',
-        poster: Bugbounty,
-        description:
-            'Dive into lines of broken code and hunt down every bug before time runs out. This isn\'t just debugging — it\'s a high-stakes bounty hunt where precision meets speed. Find. Fix. Dominate.',
-        highlights: [
-            'Languages: C, C++, Python, Java',
-            'Solo Event',
-            'Time Limit: 60 Minutes',
-            'Difficulty: Progressive',
-        ],
-        entryFee: '₹59 Solo / ₹99 Duo',
-        prizePool: '₹3,000',
-        date: 'March 7, 2026',
-        time: '10:00 AM',
-        venue: 'Lab 1',
-        registerLink: '#',
-        // Poster: dark navy blue bg (#1a2744), yellow BUG title text, blue code icons
-        theme: {
-            primary: '#e8c840',
-            secondary: '#0c1420',
-            glow: '#e8c840',
-            gradient: 'radial-gradient(ellipse at 50% 0%, rgba(232,200,64,0.12) 0%, transparent 50%), radial-gradient(ellipse at 20% 80%, rgba(40,80,140,0.25) 0%, transparent 50%), linear-gradient(160deg, #0c1420 0%, #142238 30%, #1a2e4a 60%, #0c1420 100%)',
-            particleColor: '#4a80c0',
-            marqueeWords: ['DEBUG', 'HACK', 'CODE', 'BOUNTY', 'TERMINAL', 'EXPLOIT', 'PATCH', 'HUNT'],
-        },
-    },
-    {
-        id: 'build-a-thon',
-        name: 'BUILD-A-THON',
-        tagline: '"Build It. Ship It. Own It."',
-        category: 'Hackathon',
-        categoryIcon: '🚀',
-        poster: BuildAThon,
-        description:
-            'A rapid-fire hackathon where teams design, develop, and deploy solutions to real-world problems in record time. Bring your A-game, your laptop, and your best ideas. Time is ticking — start building.',
-        highlights: [
-            'Team Size: 3-4',
-            'Duration: 4 Hours',
-            'Real-World Problem Statements',
-            'Mentorship Available',
-        ],
-        entryFee: '₹49',
-        prizePool: '₹3,000',
-        date: 'March 7, 2026',
-        time: '09:00 AM',
-        venue: 'Lab 2',
-        registerLink: '#',
-        // Poster: deep purple bg (#5b2d8e), white bold title, cyan robot eyes, purple chat bubbles
-        theme: {
-            primary: '#9b59d0',
-            secondary: '#0e0520',
-            glow: '#9b59d0',
-            gradient: 'radial-gradient(ellipse at 40% 15%, rgba(155,89,208,0.3) 0%, transparent 50%), radial-gradient(ellipse at 70% 85%, rgba(90,40,160,0.25) 0%, transparent 50%), linear-gradient(160deg, #0e0520 0%, #1c0c38 30%, #2d1450 60%, #0e0520 100%)',
-            particleColor: '#9b59d0',
-            marqueeWords: ['BUILD', 'SHIP', 'HACK', 'CODE', 'DEPLOY', 'AI', 'CREATE', 'LAUNCH'],
-        },
-    },
-    {
         id: 'codeoflies',
         name: 'CODE OF LIES',
         tagline: '"Trust No One"',
@@ -110,18 +45,18 @@ const eventsData = [
         categoryIcon: '🃏',
         poster: CodeOfLies,
         description:
-            'Deception meets strategy in this thrilling game of bluffs and code. Outsmart your opponents, plant false clues, and uncover the truth hidden beneath layers of lies. Only the most cunning will prevail.',
+            'A thrilling cryptic hunt that challenges participants to decode mind-boggling puzzles and unravel mysteries. The event takes participants on a journey through a series of thought-provoking challenges that require sharp logic and creativity. This is the perfect event to push your intellectual limits.',
         highlights: [
-            'Solo / Duo Modes',
-            'Multiple Elimination Rounds',
-            'Strategy & Bluffing Based',
-            'Surprise Twists Each Round',
+            'Cryptic Puzzle Hunt Experience',
+            'Mind-Boggling Challenges',
+            'Journey of Clues & Codes',
+            'Push Your Intellectual Limits',
         ],
-        entryFee: '₹59 Solo / ₹99 Duo',
-        prizePool: '₹5,000',
-        date: 'March 7, 2026',
-        time: '01:00 PM',
-        venue: 'Room 301',
+        entryFee: '₹79 Solo / ₹119 Duo',
+        prizePool: '₹6,000',
+        date: 'March 27,28,29 2026',
+        //time: '01:00 PM',
+        //venue: 'Room 301',
         registerLink: '#',
         // Poster: brown/sepia vintage bg (#6b4226), dark orange title, playing cards, question marks
         theme: {
@@ -136,23 +71,23 @@ const eventsData = [
     {
         id: 'ctrlaltelite',
         name: 'CTRL+ALT+ELITE',
-        tagline: '"Reboot. Rewrite. Reign."',
+        tagline: '"Code. Compete. Conquer."',
         category: 'Coding Contest',
         categoryIcon: '⌨️',
         poster: CtrlAltElite,
         description:
-            'The ultimate competitive programming showdown. Tackle algorithmic challenges that test your logic, speed, and coding mastery. Only the elite coders will survive the final round.',
+            'An electrifying coding competition where the best prevail! Compete solo or in a duo through three intense rounds—an MCQ-based challenge, a debugging round, and a final coding battle where you can use any programming language. Test your skills, solve complex problems, and prove your coding prowess. Exciting cash prizes, rewards, and goodies await the champions. Register now and step into the ultimate coding battlefield!',
         highlights: [
-            'Solo Event',
-            'DSA + Competitive Programming',
-            'Time Limit: 90 Minutes',
-            'Platform: HackerRank',
+            'Solo or Duo Participation',
+            'Three Rounds: MCQ, Debugging, Final Coding Battle',
+            'Use Any Programming Language',
+            'Exciting Cash Prizes & Rewards',
         ],
-        entryFee: '₹59 Solo / ₹99 Duo',
+        entryFee: '₹79 Solo / ₹119 Duo',
         prizePool: '₹6,000',
-        date: 'March 7, 2026',
-        time: '02:00 PM',
-        venue: 'Lab 3',
+        date: 'March 27,28,29 2026',
+        //time: '02:00 PM',
+        //venue: 'Lab 3',
         registerLink: '#',
         // Poster: dark teal/dark cyan-green bg (#0f3038), aqua/teal highlights (#4ac8c8), code editor
         theme: {
@@ -167,23 +102,23 @@ const eventsData = [
     {
         id: 'dpl',
         name: 'DPL',
-        tagline: '"Draft. Play. Lead."',
-        category: 'Auction League',
+        tagline: '"Think Like a Captain. Bid Like a Champion."',
+        category: 'The Cricket League',
         categoryIcon: '🏏',
         poster: Dpl,
         description:
-            'Step into the shoes of a team owner in this electrifying auction-based league. Draft your dream team, strategize your bids, and lead your squad to victory in a battle of wits and cricket knowledge.',
+            'Are you ready to test your cricket knowledge, strategic skills, and auction tactics? From a thrilling Cricket Quiz to an IPL-style Auction, this event is your chance to craft the perfect XI and compete for glory! Round 1: General Quiz Round on Cricket Round 2: Image Recognition Quiz Round 3: IPL Auction',
         highlights: [
-            'Team Size: 4-5',
-            'Auction-Based Drafting',
-            'Fantasy Cricket Format',
-            'Live Match Simulation',
+            'Cricket Quiz + IPL-Style Auction Experience',
+            'Three Rounds: General Quiz, Image Recognition, Auction',
+            'Build Your Perfect Playing XI',
+            'Test Cricket Knowledge & Strategy Skills',
         ],
-        entryFee: '₹149',
-        prizePool: '₹5,000',
-        date: 'March 7, 2026',
-        time: '03:00 PM',
-        venue: 'Auditorium',
+        entryFee: '₹179',
+        prizePool: '₹4,000',
+        date: 'March 27,28,29 2026',
+        //time: '03:00 PM',
+        //venue: 'Auditorium',
         registerLink: '#',
         // Poster: dark navy blue bg (#1a2856), bright yellow trophy (#e8d020), yellow bottom section
         theme: {
@@ -196,37 +131,6 @@ const eventsData = [
         },
     },
     {
-        id: 'gamestorm',
-        name: 'GAME STORM',
-        tagline: '"#FightToWin"',
-        category: 'Gaming Tournament',
-        categoryIcon: '🎮',
-        poster: GameStorm,
-        description:
-            'Valorant. Free Fire. Call of Duty. FC25. The arena is open — only the elite survive. Drop in, gear up, prove you\'re the last one standing.',
-        highlights: [
-            'Games: Valorant, Free Fire, CoD, FC25',
-            'Solo & Squad Modes',
-            'Live Leaderboard',
-            'LAN Setup Available',
-        ],
-        entryFee: '₹70–₹250',
-        prizePool: '₹10,000',
-        date: 'March 7, 2026',
-        time: '10:00 AM',
-        venue: 'Gaming Zone',
-        registerLink: '#',
-        // Poster: very dark/black bg, fire orange explosions (#e85020), dark smoky, military, orange sidebar
-        theme: {
-            primary: '#e85020',
-            secondary: '#0d0604',
-            glow: '#e85020',
-            gradient: 'radial-gradient(ellipse at 50% 0%, rgba(232,80,32,0.25) 0%, transparent 50%), radial-gradient(ellipse at 80% 50%, rgba(200,60,10,0.15) 0%, transparent 40%), radial-gradient(ellipse at 20% 80%, rgba(100,30,5,0.2) 0%, transparent 50%), linear-gradient(160deg, #0d0604 0%, #1c0e08 30%, #2a1410 60%, #0d0604 100%)',
-            particleColor: '#e85020',
-            marqueeWords: ['VALORANT', 'FREE FIRE', 'CALL OF DUTY', 'FC25', 'ESPORTS', 'PVP', 'ARENA', 'FIGHT'],
-        },
-    },
-    {
         id: 'timescape',
         name: 'ESCAPE ROOM',
         tagline: '"There Is No Way Out"',
@@ -234,18 +138,18 @@ const eventsData = [
         categoryIcon: '🔐',
         poster: TimeScape,
         description:
-            'You are locked in. The clock is ticking. Find hidden mechanisms, crack encrypted codes, and dismantle the room\'s secrets before time collapses.',
+            'A mind-bending escape room experience where nothing is as it seems! Step into a world of shifting realities, crack intricate puzzles, and unravel secrets that defy time. Work in teams, test your wit, and escape before the illusion traps you forever. Do you have what it takes?',
         highlights: [
-            'Team Size: 3-5',
-            'Time Limit: 45 Minutes',
-            'Difficulty: Expert',
-            'Theme: Cyber Vault',
+            'Mind-Bending Escape Room Experience',
+            'Time-Bound Escape Challenge',
+            'Intricate Clues & Hidden Secrets',
+            'Race Against Time to Escape',
         ],
-        entryFee: '₹199',
+        entryFee: '₹249',
         prizePool: '₹3,000',
-        date: 'March 7, 2026',
-        time: '12:00 PM',
-        venue: 'Room 105',
+        date: 'March 27,28,29 2026',
+        //time: '12:00 PM',
+        //venue: 'Room 105',
         registerLink: '#',
         // Poster: dark indigo-purple bg (#1a1040), bright violet-blue door, purple jigsaw pieces, purple glow rays
         theme: {
@@ -265,18 +169,18 @@ const eventsData = [
         categoryIcon: '🗺️',
         poster: TreasureTrove,
         description:
-            'Embark on the ultimate treasure hunt across the campus. Decode cryptic clues, navigate hidden paths, and race against rival teams to unearth the grand treasure. Adventure awaits the bold.',
+            'An exciting treasure hunt that takes teams on a quest.Solve intricate clues and tackle challenges to uncover hidden treasures. Get ready to put your problem-solving skills to the ultimate test ',
         highlights: [
-            'Team Size: 3-4',
-            'Campus-Wide Hunt',
-            'Cryptic Clue-Based',
-            'Multiple Checkpoints',
+            'Thrilling Team-Based Treasure Hunt',
+            'Intricate Clues & Hidden Challenges',
+            'Adventure-Filled Quest Experience',
+            'Race to Find the Hidden Treasure',
         ],
         entryFee: '₹299',
-        prizePool: '₹8,000',
-        date: 'March 7, 2026',
-        time: '11:00 AM',
-        venue: 'Campus Grounds',
+        prizePool: '₹5,000',
+        date: 'March 27,28,29 2026',
+        //time: '11:00 AM',
+        //venue: 'Campus Grounds',
         registerLink: '#',
         // Poster: dark charcoal/brown border, sandy/tan parchment center, dark brown title text, gold coins
         theme: {

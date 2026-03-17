@@ -3,7 +3,7 @@ import React from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import logo from "../assets/acunetix-logo.svg";
 
-const Navbar = ({ scrollToRefs, scrollToSection, isScrolled }) => {
+const Navbar = ({ scrollToRefs = {}, scrollToSection = () => {}, isScrolled = false, className = "" }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
@@ -25,7 +25,7 @@ const Navbar = ({ scrollToRefs, scrollToSection, isScrolled }) => {
       navigate("/", { state: { scrollTo: "schedule" } });
       return;
     }
-    if (scrollToRefs.scheduleRef) {
+    if (scrollToRefs?.scheduleRef) {
       setTimeout(() => scrollToSection(scrollToRefs.scheduleRef), 300);
     }
   };
@@ -35,7 +35,7 @@ const Navbar = ({ scrollToRefs, scrollToSection, isScrolled }) => {
       isScrolled 
         ? "bg-black/90  backdrop-blur-lg shadow-md" 
         : "bg-black/50"
-    }`}>
+    } ${className}`}>
       <div className="flex items-center justify-between" style={{ maxWidth: "1200px", margin: "0 auto" }}>
         {/* Left as - Desktop */}
         <div className="hidden md:flex space-x-12 gap-16">
@@ -43,7 +43,7 @@ const Navbar = ({ scrollToRefs, scrollToSection, isScrolled }) => {
             href="#home"
             onClick={(e) => {
               e.preventDefault();
-              handleLinkClick(scrollToRefs.heroRef, "hero");
+              handleLinkClick(scrollToRefs?.heroRef, "hero");
             }}
             className="hover:text-zinc-400 transition-colors duration-200 text-lg font-medium px-4 mx-5"
           >
@@ -53,7 +53,7 @@ const Navbar = ({ scrollToRefs, scrollToSection, isScrolled }) => {
             href="#events"
             onClick={(e) => {
               e.preventDefault();
-              handleLinkClick(scrollToRefs.eventRef, "events");
+              handleLinkClick(scrollToRefs?.eventRef, "events");
             }}
             className="hover:text-zinc-400 transition-colors duration-200 text-lg font-medium px-4"
           >
@@ -67,7 +67,7 @@ const Navbar = ({ scrollToRefs, scrollToSection, isScrolled }) => {
             href="#home"
             onClick={(e) => {
               e.preventDefault();
-              handleLinkClick(scrollToRefs.heroRef, "hero");
+              handleLinkClick(scrollToRefs?.heroRef, "hero");
             }}
           >
             <img
@@ -94,7 +94,7 @@ const Navbar = ({ scrollToRefs, scrollToSection, isScrolled }) => {
             href="#about"
             onClick={(e) => {
               e.preventDefault();
-              handleLinkClick(scrollToRefs.aboutRef, "about");
+              handleLinkClick(scrollToRefs?.aboutRef, "about");
             }}
             className="hover:text-zinc-400 transition-colors duration-200 text-lg font-medium px-4"
           >
@@ -143,7 +143,7 @@ const Navbar = ({ scrollToRefs, scrollToSection, isScrolled }) => {
                 href="#home"
                 onClick={(e) => {
                   e.preventDefault();
-                  handleLinkClick(scrollToRefs.heroRef, "hero");
+                  handleLinkClick(scrollToRefs?.heroRef, "hero");
                 }}
                 className="py-2 hover:text-gray-400 transition-colors duration-300"
                 style={{ fontSize: "1.5rem", padding: "1rem 2rem" }}
@@ -154,7 +154,7 @@ const Navbar = ({ scrollToRefs, scrollToSection, isScrolled }) => {
                 href="#about"
                 onClick={(e) => {
                   e.preventDefault();
-                  handleLinkClick(scrollToRefs.aboutRef, "about");
+                  handleLinkClick(scrollToRefs?.aboutRef, "about");
                 }}
                 className="py-2 hover:text-gray-400 transition-colors duration-300"
                 style={{ fontSize: "1.5rem", padding: "1rem 1rem" }}
@@ -165,7 +165,7 @@ const Navbar = ({ scrollToRefs, scrollToSection, isScrolled }) => {
                 href="#events"
                 onClick={(e) => {
                   e.preventDefault();
-                  handleLinkClick(scrollToRefs.eventRef, "events");
+                  handleLinkClick(scrollToRefs?.eventRef, "events");
                 }}
                 className="py-2 hover:text-gray-400 transition-colors duration-300"
                 style={{ fontSize: "1.5rem", padding: "1rem 1rem" }}

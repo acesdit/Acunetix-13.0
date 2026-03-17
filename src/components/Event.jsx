@@ -6,6 +6,7 @@ import eventsData from '../data/eventsData';
 const EventCard = React.memo(({ event, isActive }) => {
   const [hovered, setHovered] = useState(false);
   const navigate = useNavigate();
+  const hasPoster = Boolean(event.poster);
 
   return (
     <div
@@ -43,11 +44,24 @@ const EventCard = React.memo(({ event, isActive }) => {
             transition: 'border-color 0.35s ease',
           }}
         >
-          <img
-            src={event.poster}
-            alt={event.name}
-            className="w-full h-full object-cover"
-          />
+          {hasPoster ? (
+            <img
+              src={event.poster}
+              alt={event.name}
+              className="w-full h-full object-cover"
+            />
+          ) : (
+            <div
+              className="w-full h-full flex items-center justify-center text-center px-5"
+              style={{
+                background: `linear-gradient(150deg, ${event.theme.secondary} 0%, ${event.theme.primary}45 100%)`,
+              }}
+            >
+              <h4 className="text-white text-2xl md:text-3xl font-black tracking-wide uppercase">
+                {event.name}
+              </h4>
+            </div>
+          )}
 
           {/* Hover overlay — always in DOM, toggled via opacity */}
           <div
@@ -123,20 +137,40 @@ EventCard.displayName = 'EventCard';
 /* ─── Main Event Section ─── */
 const Event = forwardRef((props, ref) => {
   const scrollRef = useRef(null);
-  const [activeIndex, setActiveIndex] = useState(Math.floor(eventsData.length / 2));
+  // Default to Code of Lies if present.
+  const initialIndex = eventsData.findIndex((e) => e.id === 'codeoflies');
+  const startIndex = initialIndex !== -1 ? initialIndex : Math.floor(eventsData.length / 2);
+  const [activeIndex, setActiveIndex] = useState(startIndex);
+
+  const scrollSnapTimeoutRef = useRef(null);
 
   const scrollToCard = useCallback((index) => {
     const container = scrollRef.current;
     if (!container) return;
-    const cards = container.children;
-    if (!cards[index]) return;
-    const card = cards[index];
-    const containerCenter = container.offsetWidth / 2;
-    const cardCenter = card.offsetLeft + card.offsetWidth / 2;
-    container.scrollTo({
-      left: cardCenter - containerCenter,
-      behavior: 'smooth',
-    });
+    
+    // 1. Temporarily disable CSS scroll snapping so it doesn't fight JS smooth scrolling (causes 'stuck' glitches)
+    container.style.scrollSnapType = 'none';
+    if (scrollSnapTimeoutRef.current) clearTimeout(scrollSnapTimeoutRef.current);
+
+    // 2. Wait slightly for React to render the active scaling (1.05x) before measuring widths!
+    setTimeout(() => {
+      if (!scrollRef.current) return;
+      const cards = scrollRef.current.children;
+      if (!cards[index]) return;
+      const card = cards[index];
+      const containerCenter = scrollRef.current.offsetWidth / 2;
+      const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+      
+      scrollRef.current.scrollTo({
+        left: cardCenter - containerCenter,
+        behavior: 'smooth',
+      });
+
+      // 3. Re-enable CSS scroll snapping after the smooth scroll finishes (~600ms)
+      scrollSnapTimeoutRef.current = setTimeout(() => {
+        if (scrollRef.current) scrollRef.current.style.scrollSnapType = 'x mandatory';
+      }, 600);
+    }, 50);
   }, []);
 
   // Center on mount
@@ -193,9 +227,9 @@ const Event = forwardRef((props, ref) => {
 
       {/* Header */}
       <div className="relative z-10 text-center mb-12 md:mb-16 px-4">
-        <p className="text-[10px] md:text-xs font-semibold tracking-[0.4em] text-white/30 uppercase mb-4">
+        {/* <p className="text-[10px] md:text-xs font-semibold tracking-[0.4em] text-white/30 uppercase mb-4">
           Acunetix Presents
-        </p>
+        </p> */}
         <h2
           className="text-4xl md:text-6xl lg:text-7xl font-black uppercase tracking-wider"
         >
