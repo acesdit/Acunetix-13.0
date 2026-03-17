@@ -1,1 +1,0 @@
-import{u as e}from"./index-CM8Hp2a0.js";import{S as a}from"./ScheduleDayPage-Nl3jGBVT.js";const t=[{id:1,name:"ESCAPE ROOM",location:"Room 105",time:"12:00 PM"},{id:2,name:"CTRL+ALT+ELITE",location:"Lab 3",time:"02:00 PM"}];function m(){return e.jsx(a,{dayLabel:"28th March",scheduleEvents:t})}export{m as default};

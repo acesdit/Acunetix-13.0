@@ -24,6 +24,7 @@
     "react-dom": "^19.2.0",
     "react-router-dom": "^7.13.1",
     "tailwind-merge": "^3.5.0",
+    "tailwind-scrollbar-hide": "^4.0.0",
     "three": "^0.167.1"
   },
   "devDependencies": {
@@ -45,4 +46,3 @@
   },
   "homepage": "https://acunetix13.tech"
 }
-

@@ -1,3 +1,5 @@
+@import 'tailwind-scrollbar-hide/v4';
+
 @font-face {
   font-family: 'IM Fell DW Pica SC';
   src: url('./assets/fonts/IM_Fell_DW_Pica_SC/IMFellDWPicaSC-Regular.ttf') format('truetype');

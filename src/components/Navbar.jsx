@@ -100,6 +100,16 @@ const Navbar = ({ scrollToRefs = {}, scrollToSection = () => {}, isScrolled = fa
           >
             Schedule
           </a>
+          {/* <a
+            href="#sponsors"
+            onClick={(e) => {
+              e.preventDefault();
+              handleLinkClick(scrollToRefs?.sponsorsRef, "sponsors");
+            }}
+            className="hover:text-zinc-400 transition-colors duration-200 text-lg font-medium px-4"
+          >
+            Sponsors
+          </a> */}
         </div>
 
         {/* Mobile Menu Button */}
@@ -183,6 +193,17 @@ const Navbar = ({ scrollToRefs = {}, scrollToSection = () => {}, isScrolled = fa
               >
                 Schedule
               </a>
+              {/* <a
+                href="#sponsors"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleLinkClick(scrollToRefs?.sponsorsRef, "sponsors");
+                }}
+                className="py-2 hover:text-gray-400 transition-colors duration-300"
+                style={{ fontSize: "1.5rem", padding: "1rem 1rem" }}
+              >
+                Sponsors
+              </a> */}
             </div>
           </div>
         </div>

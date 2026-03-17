@@ -6,7 +6,7 @@ import Hero from '@/components/Hero';
 import About from '@/components/About';
 import Event from '@/components/Event';
 import Schedule from '@/components/Schedule';
-import Sponsors from '@/components/Sponsors';
+// import Sponsors from '@/components/Sponsors';
 import Reel from '@/components/Reel';
 import Footer from '@/components/Footer';
 
@@ -74,7 +74,7 @@ function HomePage({ scrollToRefs, scrollToSection, isScrolled }) {
           <About ref={scrollToRefs.aboutRef} />
           <Event ref={scrollToRefs.eventRef} />
           <Schedule ref={scrollToRefs.scheduleRef} />
-          <Sponsors ref={scrollToRefs.sponsorsRef} />
+          {/* <Sponsors ref={scrollToRefs.sponsorsRef} /> */}
           <Reel ref={scrollToRefs.reelRef} />
         </main>
 

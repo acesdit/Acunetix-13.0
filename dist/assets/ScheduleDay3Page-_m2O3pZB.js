@@ -1,0 +1,1 @@
+import{j as e}from"./index-DRWqbVUq.js";import{S as a}from"./ScheduleDayPage-DcTgBmUv.js";const t=[{id:1,name:"TREASURE TROVE",location:"Campus Grounds",time:"11:00 AM"},{id:2,name:"DPL",location:"Auditorium",time:"03:00 PM"}];function m(){return e.jsx(a,{dayLabel:"29th March",scheduleEvents:t})}export{m as default};
