@@ -10,7 +10,7 @@ const EventCard = React.memo(({ event, isActive }) => {
 
   return (
     <div
-      className="shrink-0 snap-center px-3 md:px-4"
+      className="flex-shrink-0 snap-center px-3 md:px-4"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
@@ -49,9 +49,6 @@ const EventCard = React.memo(({ event, isActive }) => {
               src={event.poster}
               alt={event.name}
               className="w-full h-full object-contain object-top"
-              loading="lazy"
-              decoding="async"
-              draggable="false"
             />
           ) : (
             <div
@@ -140,63 +137,46 @@ EventCard.displayName = 'EventCard';
 /* ─── Main Event Section ─── */
 const Event = forwardRef((props, ref) => {
   const scrollRef = useRef(null);
-  // Default to Code of Lies if present.
-  const initialIndex = eventsData.findIndex((e) => e.id === 'codeoflies');
+  // Default to Ctrl Alt Elite if present.
+  const initialIndex = eventsData.findIndex((e) => e.id === 'ctrlaltelite');
   const startIndex = initialIndex !== -1 ? initialIndex : Math.floor(eventsData.length / 2);
   const [activeIndex, setActiveIndex] = useState(startIndex);
 
-  const autoScrollReleaseRef = useRef(null);
-  const isProgrammaticScrollRef = useRef(false);
+  const scrollSnapTimeoutRef = useRef(null);
 
-  const scrollToCard = useCallback((index, behaviorOverride) => {
+  const scrollToCard = useCallback((index) => {
     const container = scrollRef.current;
     if (!container) return;
 
-    const card = container.children[index];
-    if (!card) return;
+    // 1. Temporarily disable CSS scroll snapping so it doesn't fight JS smooth scrolling (causes 'stuck' glitches)
+    container.style.scrollSnapType = 'none';
+    if (scrollSnapTimeoutRef.current) clearTimeout(scrollSnapTimeoutRef.current);
 
-    const targetLeft = Math.max(
-      0,
-      card.offsetLeft - (container.clientWidth - card.clientWidth) / 2,
-    );
+    // 2. Wait slightly for React to render the active scaling (1.05x) before measuring widths!
+    setTimeout(() => {
+      if (!scrollRef.current) return;
+      const cards = scrollRef.current.children;
+      if (!cards[index]) return;
+      const card = cards[index];
+      const containerCenter = scrollRef.current.offsetWidth / 2;
+      const cardCenter = card.offsetLeft + card.offsetWidth / 2;
 
-    const prefersReducedMotion =
-      typeof window !== 'undefined' &&
-      window.matchMedia &&
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      scrollRef.current.scrollTo({
+        left: cardCenter - containerCenter,
+        behavior: 'smooth',
+      });
 
-    const behavior = behaviorOverride || (prefersReducedMotion ? 'auto' : 'smooth');
-
-    isProgrammaticScrollRef.current = true;
-    if (autoScrollReleaseRef.current) {
-      window.clearTimeout(autoScrollReleaseRef.current);
-    }
-
-    container.scrollTo({ left: targetLeft, behavior });
-
-    if (behavior === 'smooth') {
-      autoScrollReleaseRef.current = window.setTimeout(() => {
-        isProgrammaticScrollRef.current = false;
-      }, 450);
-    } else {
-      isProgrammaticScrollRef.current = false;
-    }
+      // 3. Re-enable CSS scroll snapping after the smooth scroll finishes (~600ms)
+      scrollSnapTimeoutRef.current = setTimeout(() => {
+        if (scrollRef.current) scrollRef.current.style.scrollSnapType = 'x mandatory';
+      }, 600);
+    }, 50);
   }, []);
 
   // Center on mount
   useEffect(() => {
-    const frame = window.requestAnimationFrame(() => {
-      scrollToCard(startIndex, 'auto');
-    });
-    return () => window.cancelAnimationFrame(frame);
-  }, [scrollToCard, startIndex]);
-
-  useEffect(() => {
-    return () => {
-      if (autoScrollReleaseRef.current) {
-        window.clearTimeout(autoScrollReleaseRef.current);
-      }
-    };
+    const t = setTimeout(() => scrollToCard(activeIndex), 150);
+    return () => clearTimeout(t);
   }, []);
 
   // Debounced scroll detection — only fires after scroll stops
@@ -208,8 +188,6 @@ const Event = forwardRef((props, ref) => {
     const onScroll = () => {
       clearTimeout(timer);
       timer = setTimeout(() => {
-        if (isProgrammaticScrollRef.current) return;
-
         const center = container.scrollLeft + container.offsetWidth / 2;
         let best = 0;
         let bestDist = Infinity;
@@ -291,8 +269,6 @@ const Event = forwardRef((props, ref) => {
           style={{
             scrollSnapType: 'x mandatory',
             WebkitOverflowScrolling: 'touch',
-            overscrollBehaviorX: 'contain',
-            touchAction: 'pan-x pan-y',
             paddingLeft: 'calc(50vw - clamp(130px, 11vw, 170px))',
             paddingRight: 'calc(50vw - clamp(130px, 11vw, 170px))',
           }}

@@ -1,6 +1,6 @@
-import React, { useEffect, useCallback } from 'react';
+import React, { useEffect, useCallback, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import eventsData from '../data/eventsData';
 import Navbar from './Navbar';
 import Footer from './Footer';
@@ -45,6 +45,7 @@ const EventDetails = () => {
     const { eventName } = useParams();
     const navigate = useNavigate();
     const event = eventsData.find((e) => e.id === eventName);
+    const [isInstructionOpen, setIsInstructionOpen] = useState(false);
 
     const handleBack = useCallback(() => {
         navigate('/');
@@ -354,27 +355,33 @@ const EventDetails = () => {
                                 </div>
                             </motion.div>
 
-                            {/* Register button */}
-                            <motion.a
-                                href={event.registerLink}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="inline-block px-10 py-4 rounded-lg font-black text-sm tracking-[0.25em] uppercase text-black transition-all duration-300 no-underline"
-                                style={{
-                                    backgroundColor: theme.primary,
-                                    boxShadow: 'none',
-                                }}
-                                whileHover={{
-                                    scale: 1.05,
-                                    boxShadow: 'none',
-                                }}
-                                whileTap={{ scale: 0.97 }}
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.5, delay: 1 }}
-                            >
-                                Register Now
-                            </motion.a>
+                            {/* Register and Instructions buttons */}
+                            <div className="flex flex-col sm:flex-row gap-4 items-start">
+                                <motion.a
+                                    href={event.registerLink}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-block px-10 py-4 border-2 border-transparent rounded-lg font-black text-sm tracking-[0.25em] uppercase text-black transition-all duration-300 no-underline hover:scale-105 active:scale-95"
+                                    style={{
+                                        backgroundColor: theme.primary,
+                                        boxShadow: 'none',
+                                    }}
+                                >
+                                    Register Now
+                                </motion.a>
+
+                                <motion.button
+                                    onClick={() => setIsInstructionOpen(true)}
+                                    className="inline-block px-10 py-4 rounded-lg font-black text-sm tracking-[0.25em] uppercase transition-all duration-300 border-2 cursor-pointer hover:scale-105 hover:bg-white/10 active:scale-95"
+                                    style={{
+                                        borderColor: theme.primary,
+                                        color: theme.primary,
+                                        backgroundColor: 'transparent',
+                                    }}
+                                >
+                                    Instructions
+                                </motion.button>
+                            </div>
                         </motion.div>
 
                         {/* Right column - Floating poster (desktop only) */}
@@ -444,42 +451,64 @@ const EventDetails = () => {
                 </motion.div>
                 */}
 
-                {/* Registration instructions */}
-                <motion.div
-                    className="px-4 sm:px-6 md:px-12 lg:px-20 mt-12"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 1.05 }}
-                >
-                    <div
-                        className="w-full max-w-7xl mx-auto rounded-xl border p-5 md:p-7"
-                        style={{
-                            borderColor: `${theme.primary}45`,
-                            backgroundColor: 'rgba(0, 0, 0, 0.45)',
-                            backdropFilter: 'blur(4px)',
-                        }}
-                    >
-                        <p
-                            className="text-2xl md:text-4xl font-black uppercase mb-6 tracking-[0.24em]"
-                            style={{ color: theme.primary }}
-                        >
-                            Instructions
-                        </p>
-
-                        <ol className="list-decimal pl-7 space-y-5 text-white text-2xl md:text-3xl leading-10 md:leading-[3.2rem] font-black">
-                            <li>Please ensure that all the details provided in the form are accurate and complete.</li>
-                            <li>The payment made must match the event you have registered for; incorrect selections or payments will not be accepted or refunded.</li>
-                            <li>Further details and updates regarding the event will be communicated via email.</li>
-                        </ol>
-                    </div>
-                </motion.div>
             </div>
 
             {/* Bottom marquee */}
             <MarqueeStrip words={theme.marqueeWords} color={theme.primary} />
             {/* Sticky Navbar at bottom */}
             <Footer scrollToRefs={{ heroRef: true }} scrollToSection={() => navigate('/')} />
-            <Navbar scrollToRefs={{}} scrollToSection={() => {}} isScrolled={true} />
+            <Navbar scrollToRefs={{}} scrollToSection={() => { }} isScrolled={true} />
+
+            {/* Modal for Instructions */}
+            <AnimatePresence>
+                {isInstructionOpen && (
+                    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+                        {/* Backdrop */}
+                        <motion.div
+                            className="absolute inset-0 bg-black/80 backdrop-blur-sm cursor-pointer"
+                            onClick={() => setIsInstructionOpen(false)}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.3 }}
+                        />
+
+                        {/* Modal Content */}
+                        <motion.div
+                            className="relative w-full max-w-3xl rounded-xl border p-6 md:p-10 shadow-2xl overflow-y-auto max-h-[90vh]"
+                            style={{
+                                borderColor: `${theme.primary}60`,
+                                backgroundColor: '#0a0a0a',
+                            }}
+                            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                            animate={{ opacity: 1, scale: 1, y: 0 }}
+                            exit={{ opacity: 0, scale: 0.95, y: 20 }}
+                            transition={{ duration: 0.3 }}
+                        >
+                            <button
+                                className="absolute top-4 right-4 p-2 text-white/60 hover:text-white cursor-pointer"
+                                onClick={() => setIsInstructionOpen(false)}
+                                aria-label="Close"
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 6L6 18M6 6l12 12" /></svg>
+                            </button>
+
+                            <p
+                                className="text-2xl md:text-3xl font-black uppercase mb-6 tracking-[0.2em] border-b pb-4"
+                                style={{ color: theme.primary, borderColor: `${theme.primary}30` }}
+                            >
+                                Instructions
+                            </p>
+
+                            <ol className="list-decimal pl-7 space-y-4 text-white/90 text-lg md:text-xl leading-relaxed font-semibold">
+                                <li>Please ensure that all the details provided in the form are accurate and complete.</li>
+                                <li>The payment made must match the event you have registered for; incorrect selections or payments will not be accepted or refunded.</li>
+                                <li>Further details and updates regarding the event will be communicated via email.</li>
+                            </ol>
+                        </motion.div>
+                    </div>
+                )}
+            </AnimatePresence>
         </motion.div>
     );
 };
