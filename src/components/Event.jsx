@@ -93,9 +93,11 @@ const EventCard = React.memo(({ event, isActive, onOpenEvent }) => {
       {/* Card info */}
       <div
         className="mt-4 text-center"
+        onClick={() => onOpenEvent(event.id)}
         style={{
           transition: 'opacity 0.3s ease',
           opacity: isActive ? 1 : 0.35,
+          cursor: 'pointer',
         }}
       >
         <div className="flex justify-center mb-2">
@@ -259,7 +261,7 @@ const Event = forwardRef((props, ref) => {
               scrollToCard(next);
             }
           }}
-          className={`absolute left-2 md:left-6 top-1/2 -translate-y-1/2 z-30 flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full bg-black/90 border border-white/20 text-white cursor-pointer ${activeIndex === 0 ? 'invisible' : ''}`}
+          className={`absolute left-2 md:left-6 top-1/2 -translate-y-1/2 z-30 hidden md:flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full bg-black/90 border border-white/20 text-white cursor-pointer ${activeIndex === 0 ? 'invisible' : ''}`}
           aria-label="Previous"
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="m15 18-6-6 6-6" /></svg>
@@ -272,6 +274,8 @@ const Event = forwardRef((props, ref) => {
           style={{
             scrollSnapType: 'x mandatory',
             WebkitOverflowScrolling: 'touch',
+            touchAction: 'pan-x',
+            overscrollBehaviorX: 'contain',
             paddingLeft: 'calc(50vw - clamp(130px, 11vw, 170px))',
             paddingRight: 'calc(50vw - clamp(130px, 11vw, 170px))',
           }}
@@ -295,7 +299,7 @@ const Event = forwardRef((props, ref) => {
               scrollToCard(next);
             }
           }}
-          className={`absolute right-2 md:right-6 top-1/2 -translate-y-1/2 z-30 flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full bg-black/90 border border-white/20 text-white cursor-pointer ${activeIndex === eventsData.length - 1 ? 'invisible' : ''}`}
+          className={`absolute right-2 md:right-6 top-1/2 -translate-y-1/2 z-30 hidden md:flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full bg-black/90 border border-white/20 text-white cursor-pointer ${activeIndex === eventsData.length - 1 ? 'invisible' : ''}`}
           aria-label="Next"
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="m9 18 6-6-6-6" /></svg>

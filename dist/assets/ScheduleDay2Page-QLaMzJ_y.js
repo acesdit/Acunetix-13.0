@@ -1,1 +1,0 @@
-import{j as e}from"./index-CzCypvw_.js";import{S as a}from"./ScheduleDayPage-DeFU2_V-.js";import"./ShapeGrid-DQ_SPvKl.js";const t=[{id:1,name:"ESCAPE ROOM",location:"Room 105",time:"12:00 PM"},{id:2,name:"CTRL+ALT+ELITE",location:"Lab 3",time:"02:00 PM"}];function n(){return e.jsx(a,{dayLabel:"28th March",scheduleEvents:t})}export{n as default};

@@ -7,13 +7,54 @@
    #bp-web-widget,
    [class*="WebchatContainer"],
    [class*="webchatContainer"] {
+      pointer-events: none !important;
+   }
+
+   .bpChatContainer button,
+   #bp-web-widget-container button,
+   #bp-web-widget button,
+   [class*="WebchatContainer"] button,
+   [class*="webchatContainer"] button,
+   .bpChatContainer iframe,
+   #bp-web-widget-container iframe,
+   #bp-web-widget iframe,
+   [class*="WebchatContainer"] iframe,
+   [class*="webchatContainer"] iframe,
+   .bpChatContainer a,
+   #bp-web-widget-container a,
+   #bp-web-widget a,
+   [class*="WebchatContainer"] a,
+   [class*="webchatContainer"] a,
+   .bpChatContainer input,
+   #bp-web-widget-container input,
+   #bp-web-widget input,
+   [class*="WebchatContainer"] input,
+   [class*="webchatContainer"] input,
+   .bpChatContainer textarea,
+   #bp-web-widget-container textarea,
+   #bp-web-widget textarea,
+   [class*="WebchatContainer"] textarea,
+   [class*="webchatContainer"] textarea,
+   .bpChatContainer [role="button"],
+   #bp-web-widget-container [role="button"],
+   #bp-web-widget [role="button"],
+   [class*="WebchatContainer"] [role="button"],
+   [class*="webchatContainer"] [role="button"] {
+      pointer-events: auto !important;
+   }
+
+   .bpChatContainer,
+   #bp-web-widget-container,
+   #bp-web-widget,
+   [class*="WebchatContainer"],
+   [class*="webchatContainer"] {
       position: fixed !important;
       inset: auto 12px 78px auto !important;
-      width: 64vw !important;
-      max-width: 240px !important;
+      width: 54vw !important;
+      max-width: 220px !important;
       min-width: 0 !important;
-      height: 38vh !important;
-      max-height: 320px !important;
+      height: 32vh !important;
+      max-height: 280px !important;
       min-height: 0 !important;
       border-radius: 14px !important;
       overflow: hidden !important;
@@ -25,10 +66,10 @@
    #bp-web-widget > div,
    [class*="WebchatContainer"] > div,
    [class*="webchatContainer"] > div {
-      width: 64vw !important;
-      max-width: 240px !important;
-      height: 38vh !important;
-      max-height: 320px !important;
+      width: 54vw !important;
+      max-width: 220px !important;
+      height: 32vh !important;
+      max-height: 280px !important;
       min-height: 0 !important;
       border-radius: 14px !important;
       overflow: hidden !important;
@@ -41,7 +82,7 @@
    [class*="webchatContainer"] iframe {
       width: 100% !important;
       height: 100% !important;
-      max-height: 320px !important;
+      max-height: 280px !important;
       min-height: 0 !important;
       border-radius: 14px !important;
    }
@@ -55,10 +96,10 @@
    [class*="WebchatContainer"],
    [class*="webchatContainer"] {
       inset: auto 10px 74px auto !important;
-      width: 56vw !important;
-      max-width: 210px !important;
-      height: 32vh !important;
-      max-height: 260px !important;
+      width: 48vw !important;
+      max-width: 190px !important;
+      height: 28vh !important;
+      max-height: 220px !important;
       border-radius: 12px !important;
    }
 
@@ -67,10 +108,10 @@
    #bp-web-widget > div,
    [class*="WebchatContainer"] > div,
    [class*="webchatContainer"] > div {
-      width: 56vw !important;
-      max-width: 210px !important;
-      height: 32vh !important;
-      max-height: 260px !important;
+      width: 48vw !important;
+      max-width: 190px !important;
+      height: 28vh !important;
+      max-height: 220px !important;
       border-radius: 12px !important;
    }
 
@@ -79,7 +120,7 @@
    #bp-web-widget iframe,
    [class*="WebchatContainer"] iframe,
    [class*="webchatContainer"] iframe {
-      max-height: 260px !important;
+      max-height: 220px !important;
       border-radius: 12px !important;
    }
 }

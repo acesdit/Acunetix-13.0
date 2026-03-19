@@ -130,9 +130,9 @@ const EventDetails = () => {
             {/* Floating Lines for treasure-trove */}
             {id === 'treasure-trove' && (
                 <div className="fixed inset-0 w-full h-full z-0 pointer-events-none">
-                    <div style={{ width: '100%', height: '100%', position: 'absolute' }} className="pointer-events-auto">
+                    <div style={{ width: '100%', height: '100%', position: 'absolute' }} className="pointer-events-none">
                         <FloatingLines
-                            linesGradient={['#fff5cc', theme.primary, theme.secondary, theme.primary, '#fff5cc']}
+                            linesGradient={['#ffffff', '#f7f3ea', '#efe9dd', '#f7f3ea', '#ffffff']}
                             enabledWaves={["top", "bottom", "middle"]}
                             // Array - specify line count per wave; Number - same count for all waves
                             lineCount={5}
@@ -140,8 +140,8 @@ const EventDetails = () => {
                             lineDistance={14.5}
                             bendRadius={13.5}
                             bendStrength={0}
-                            interactive={true}
-                            parallax={true}
+                            interactive={false}
+                            parallax={false}
                         />
                     </div>
                 </div>
